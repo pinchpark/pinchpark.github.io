@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Pinch Park: Privacy, Terms &amp; Support</title>
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+<style>
+  /* Layout: one readable column, a sticky tab bar that switches between the two documents. */
+  :root {
+    --bg: #F6F8F4;
+    --surface: #FFFFFF;
+    --ink: #17302A;
+    --muted: #55695F;
+    --line: #D6E0D8;
+    --accent: #1E7A55;
+    --accent-soft: #E1F1E8;
+    --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0F1B17; --surface: #16251F; --ink: #E4EFE8; --muted: #9DB3A7;
+      --line: #2A3D35; --accent: #5FD3A0; --accent-soft: #1C3A2E; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0F1B17; --surface: #16251F; --ink: #E4EFE8; --muted: #9DB3A7;
+    --line: #2A3D35; --accent: #5FD3A0; --accent-soft: #1C3A2E; color-scheme: dark;
+  }
+  body {
+    background: var(--bg); color: var(--ink);
+    font-family: var(--body); font-size: 17px; line-height: 1.6;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px);
+    z-index: 10; background: var(--bg);
+  }
+  .wrap {
+    max-width: 44rem; margin: 0 auto;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    padding-block: 2.5rem 4rem;
+  }
+  header.top { display: grid; gap: 0.4rem; margin-bottom: 1.5rem; }
+  .eyebrow {
+    font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); font-weight: 700;
+  }
+  h1, h2 { font-family: var(--display); text-wrap: balance; line-height: 1.15; }
+  h1 { font-size: clamp(2rem, 6vw, 2.8rem); font-weight: 800; margin: 0; }
+  .lede { color: var(--muted); margin: 0; }
+  nav.tabs {
+    position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+    background: var(--bg); padding-block: 0.6rem;
+    display: flex; gap: 0.5rem; flex-wrap: wrap; border-bottom: 1px solid var(--line);
+  }
+  nav.tabs a {
+    font-weight: 700; text-decoration: none; color: var(--muted);
+    padding: 0.45rem 0.95rem; border-radius: 999px; border: 1px solid transparent;
+  }
+  nav.tabs a[aria-current="page"] { color: var(--accent); background: var(--accent-soft); border-color: var(--accent); }
+  nav.tabs a:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  article { padding-top: 1.75rem; }
+  article h2 { font-size: 1.35rem; font-weight: 600; margin: 2rem 0 0.5rem; }
+  article p, article li { max-width: 65ch; }
+  article ul, article ol { padding-left: 1.25rem; display: grid; gap: 0.45rem; }
+  .updated { color: var(--muted); font-size: 0.92rem; margin: 0 0 1rem; }
+  .callout {
+    background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+    padding: 1rem 1.15rem; margin: 1.25rem 0;
+  }
+  .callout strong { color: var(--accent); }
+  dl.uses { display: grid; gap: 0.9rem; margin: 0.75rem 0 0; }
+  dl.uses div { display: grid; gap: 0.15rem; padding-bottom: 0.9rem; border-bottom: 1px solid var(--line); }
+  dl.uses div:last-child { border-bottom: 0; }
+  dt { font-weight: 700; }
+  dd { margin: 0; color: var(--ink); max-width: 65ch; }
+  .contact { font-family: var(--display); font-weight: 600; font-size: 1.1rem; user-select: all; overflow-wrap: anywhere; }
+  footer { margin-top: 3rem; color: var(--muted); font-size: 0.9rem; }
+  @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+  article a { color: #1E6B4F; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a class="eyebrow" href="/" style="text-decoration:none">← Pinch Park for Apple Vision Pro</a>
+    <h1>Privacy, Terms &amp; Support</h1>
+    <p class="lede">What the game uses, what it never keeps, the rules that keep the Park friendly, and how to get help.</p>
+  </header>
+
+  <nav class="tabs" aria-label="Documents">
+    <a href="/privacy.html" id="tab-privacy" aria-current="page">Privacy Policy</a>
+    <a href="/terms.html" id="tab-terms">Terms of Use</a>
+    <a href="/support.html" id="tab-support">Support</a>
+  </nav>
+
+  <article id="privacy" aria-labelledby="tab-privacy">
+    <p class="updated">Last updated November 3, 2026</p>
+    <p>Pinch Park ("the game", "we", "us") is a social game for Apple Vision Pro where players build a character, decorate a house, hang out at the Park and play table games together. This policy explains what information the game uses, why, who it's shared with, and the choices and rights you have. Pinch Park is made by Pinch Park LLC, a Washington limited liability company, which is responsible for your information. You can reach us at pinchparkgame@yahoo.com.</p>
+
+    <div class="callout"><strong>The short version:</strong> we don't sell or share your data for advertising, show ads, or track you. We don't run our own servers that store your gameplay. Voice and chat go live to nearby players and are never recorded or stored by us. Your progress stays on your device and in your own iCloud. The only personal information we ever receive is what's in a player report or an email you choose to send us.</div>
+
+    <h2>Information the game uses</h2>
+    <dl class="uses">
+      <div><dt>Game Center</dt><dd>Your Game Center display name and player ID, used to find friends and match you with other players at the Park. Apple's Game Center privacy policy also applies.</dd></div>
+      <div><dt>Voice chat</dt><dd>When you're near other players, your microphone audio is streamed live to them so you can talk. Voice is not recorded or stored by us, and we can't listen to it. You can mute your mic at any time, and the game only uses the microphone after you allow it.</dd></div>
+      <div><dt>Head and hand tracking</dt><dd>The direction your head faces and tilts, and the position of your hands, move your character and are shared live with nearby players so they can see you look around, wave and high-five. This is used only to animate your character in real time. It is not stored, not used to identify you, and not a scan of your face, hands or body. We don't collect biometric identifiers or biometric information, and Apple doesn't give apps access to where your eyes look, your camera, or your surroundings.</dd></div>
+      <div><dt>Chat bubbles and names</dt><dd>Short messages you type, and the name you give your character, are shown live to nearby players. Bad words, contact details (emails, phone numbers, links, social media handles) and requests to move to other apps are filtered out, on your device and on theirs. We don't store chats.</dd></div>
+      <div><dt>Photos you hang in your house</dt><dd>If you hang your own photo on a wall, a small copy is sent to the people visiting your house so they can see it. It isn't sent to anyone at the Park, isn't shown to players in kid-safe mode, and isn't stored by us. Photos hung by players under 13 are never sent to anyone. Your photos are deleted with Delete My Data.</dd></div>
+      <div><dt>Your game progress</dt><dd>Your character, coins, items, house and friends list are saved on your device and, if you're signed in to iCloud, in your private iCloud storage so they follow you to a new device. We can't read your iCloud data.</dd></div>
+      <div><dt>Purchases</dt><dd>Handled entirely by Apple. We never see your name, payment details or billing address.</dd></div>
+      <div><dt>Player reports and emails to us</dt><dd>If you report a player, the game prepares an email to us with their name and player ID, the reason, any details you write, and your character name and player ID, so we can review it and reply. You send it from the Mail app, so we also receive your email address. If Mail isn't set up, a copy is put on your clipboard so you can send it another way. The same applies to any support email you send us.</dd></div>
+      <div><dt>Age question</dt><dd>On first launch the game asks your birth year and keeps only an age group (under 13, 13–17, or 18+) on your device and in your iCloud. The birth year itself isn't saved, and the age group is never sent to us.</dd></div>
+      <div><dt>Ban list</dt><dd>To keep banned players out, the game downloads a short list of banned Game Center player IDs from our web host when it opens and every few minutes at the Park. Nothing about you is sent with that request beyond what any web request includes (your IP address, which the host may log briefly).</dd></div>
+      <div><dt>Screen Time</dt><dd>If a parent has limited multiplayer games or messaging in Screen Time, the game follows those settings: no matchmaking with other players, and no voice or typed chat.</dd></div>
+    </dl>
+
+    <h2>Why we use it (legal bases)</h2>
+    <p>We use information to run the game you asked to play (providing the service), to keep players safe and enforce our rules (our legitimate interest in a safe community, and yours), with your permission where the system asks for it (microphone, hand tracking), and where the law requires us to (for example, responding to a valid legal request).</p>
+
+    <h2>Who we share it with</h2>
+    <ul>
+      <li><strong>Other players</strong> see your character, name, chat, voice and movements live, as described above.</li>
+      <li><strong>Apple</strong> provides Game Center, iCloud, SharePlay and purchases under its own privacy policy.</li>
+      <li><strong>Our service providers:</strong> our email provider (which receives reports and support emails) and the hosts of our web pages and ban list. They only handle that information to provide their service.</li>
+      <li><strong>Safety and the law:</strong> we may share a report or other information we hold if we believe in good faith it's needed to comply with the law or a valid legal request, to protect someone from harm, to report suspected child exploitation to the proper authorities, or to protect the game and its players.</li>
+      <li>If the game is ever sold or transferred, this policy continues to apply to information we hold.</li>
+    </ul>
+
+    <h2>What we don't do</h2>
+    <ul>
+      <li>We don't sell your personal information, and we don't share it for targeted (cross-context behavioral) advertising.</li>
+      <li>We don't show ads or use advertising or analytics trackers, and we don't track you across other apps or websites. We treat Global Privacy Control and similar signals as a request to opt out, which is already our default.</li>
+      <li>We don't use your camera, your surroundings or your Persona scan. If you use SharePlay, Apple shows your Spatial Persona to the people on your FaceTime call; that's handled by Apple.</li>
+      <li>We don't collect health data, precise location, contacts, or biometric data.</li>
+    </ul>
+
+    <h2>How long we keep it</h2>
+    <p>Game progress stays on your device and in your iCloud until you delete it. Player reports and support emails are kept only as long as needed to handle them and keep players safe, and no longer than 2 years, unless the law requires us to keep them longer. Banned player IDs stay on the ban list until the ban ends.</p>
+
+    <h2>Children</h2>
+    <p>Apple recommends Apple Vision Pro for ages 13 and up; younger children should only use it with a parent's permission and supervision. Players under 13 automatically get kid-safe mode: no voice chat in or out, no typed chat with other players (quick phrases only), no trading, no photos from other players, and gifts only from friends they've added. Buying coins needs a grown-up to answer a parent check first, and Apple's Ask to Buy also applies. Players 13–17 start with voice chat from friends only. We don't knowingly collect personal information from children under 13. If you're a parent and think we've received your child's information (for example, in an email or report), contact us and we'll delete it.</p>
+
+    <h2>Your choices and rights</h2>
+    <ul>
+      <li>Mute, block or report any player from the ••• button next to their name.</li>
+      <li>At the Park, choose who you can hear: everyone nearby, friends only, or nobody (Friends → Safety).</li>
+      <li>Delete everything the game saved, on your device and in iCloud, from Friends → Safety → Delete My Data.</li>
+      <li>Turn off the microphone or hand tracking at any time in your Vision Pro's Settings.</li>
+      <li>Depending on where you live (for example California, Washington, Colorado, Virginia, Texas and other US states, the EU, the UK or Canada), you may have the right to ask what personal information we hold about you, to get a copy, to correct it, to delete it, and to opt out of sale, sharing or targeted advertising (which we don't do). Email us to make a request. We'll verify it's really you, answer within the time the law gives us (usually 30 to 45 days), and won't treat you differently for asking. You can also use an authorized agent, and you can appeal a decision by replying to our answer. In the EU and UK you can also complain to your data protection authority.</li>
+    </ul>
+
+    <h2>Where information is handled</h2>
+    <p>We're in the United States. If you play from another country, the limited information we receive (reports and emails) is handled in the US, where privacy laws may differ from yours.</p>
+
+    <h2>Security</h2>
+    <p>Online messages between players travel through Apple's Game Center and SharePlay services, and the game size-checks and rate-limits them. We keep what we receive to a minimum. No system is perfectly secure, so please never share passwords or personal details in the game.</p>
+
+    <h2>Changes to this policy</h2>
+    <p>If we change how the game uses information, we'll update this page and the date at the top before the change takes effect. If a change is significant, we'll also let players know in the game.</p>
+
+    <h2>Contact</h2>
+    <p class="contact"><a href="mailto:pinchparkgame@yahoo.com">pinchparkgame@yahoo.com</a></p>
+  </article>
+
+  <article id="terms" aria-labelledby="tab-terms" hidden>
+    <p class="updated">Last updated November 3, 2026</p>
+    <p>These Terms of Use ("Terms") are an agreement between you and Pinch Park LLC, a Washington limited liability company ("we", "us"). By downloading or playing Pinch Park you agree to these Terms, the Community Rules below and our Privacy Policy. If you don't agree, please don't play.</p>
+    <div class="callout"><strong>Important:</strong> please read section 3 (health, safety and your own risk), sections 13 and 14 (disclaimers and limits on our liability) and section 16 (<strong>binding individual arbitration and a class action waiver</strong>, which affect how disputes are resolved, with a way to opt out within 30 days).</div>
+
+    <h2>1. Who can play</h2>
+    <p>If you're under 18 (or the age of majority where you live), a parent or guardian must agree to these Terms for you, supervise your play, and is responsible for your use of the game, including purchases and following section 3. Apple recommends Apple Vision Pro for ages 13 and up. Players under 13 should only play with a parent's permission and direct supervision, and automatically get kid-safe mode. You may not play if you are barred from doing so by law, or if you live in, or are on a government list of people restricted by, a country or list under US sanctions or export laws.</p>
+
+    <h2>2. Apple and the App Store</h2>
+    <p>Your license to use the app comes from Apple's Licensed Application End User License Agreement (the "Standard EULA"), and these Terms add to it. These Terms are between you and us, not Apple. Apple is not responsible for the game or its content, has no obligation to provide maintenance or support, and is not responsible for any claims about the game (including product liability claims, claims that it fails to meet a legal or regulatory requirement, consumer protection or privacy claims, or claims that it infringes someone's intellectual property). If the app fails to conform to any warranty that applies by law, you may notify Apple for a refund of its purchase price, if any, and Apple has no other warranty obligation. Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them against you.</p>
+
+    <h2>3. Health, safety and your own risk</h2>
+    <div class="callout"><strong>Seizure warning.</strong> A very small number of people may have seizures or blackouts when exposed to flashing lights or patterns, including in games, even if they have never had one before or have no history of epilepsy. If you or anyone in your family has had a seizure or epilepsy, talk to a doctor before playing. Stop playing immediately and see a doctor if you have dizziness, altered vision, eye or muscle twitching, loss of awareness, disorientation, convulsions or any involuntary movement.</div>
+    <p><strong>Your space.</strong> Pinch Park is a fully immersive game: while you play you may not be able to see the real room around you. You never need to walk around to play, because the game moves you. Play seated or standing in one place, in a safe area cleared of people, pets, furniture, stairs, sharp edges, cords and other hazards, and away from windows, walls and ceiling fans. Reaching out (for example to wave or high-five) can hit things or people near you. Be careful of the headset's cable and battery pack.</p>
+    <p><strong>Your body.</strong> Virtual movement can cause motion sickness, eye strain, headaches, nausea, disorientation, or tired hands and arms. Take a break at least every 30 minutes (the game can remind you), use Comfort mode if turning bothers you, and stop if you feel any discomfort. After playing, wait until any symptoms are completely gone before driving, riding a bike, using machinery or doing anything that needs balance or attention. If you are pregnant, elderly, have a heart condition, vision or balance problems, a psychiatric condition, or a medical device such as a pacemaker, talk to your doctor first and follow Apple's Apple Vision Pro safety and health information. Keep the volume at a comfortable level.</p>
+    <p><strong>When not to play.</strong> Never play while driving, riding, walking around, operating machinery, or under the influence of alcohol, drugs or anything that affects your balance or judgment, and never in a moving vehicle (except as a passenger using Apple's travel mode where available).</p>
+    <p><strong>Your choice and your risk.</strong> You understand that using a headset and playing an immersive game carries these and other risks, some of which can't be foreseen. You choose to play voluntarily and, to the fullest extent allowed by law, you accept those risks and are responsible for your own safety, your surroundings and your property, and (if you're a parent or guardian) your child's. To the fullest extent allowed by law, you release Pinch Park LLC and its members, managers and contractors from claims for injury, illness or damage that come from those risks, except where caused by our gross negligence or intentional misconduct. Pinch Park is entertainment only. It is not a medical, fitness or therapeutic product, and nothing in it is medical advice.</p>
+
+    <h2>4. Community rules</h2>
+    <ol>
+      <li>Be kind. No bullying, harassment, threats or hate of any kind.</li>
+      <li>Keep it clean. No sexual content, and nothing that endangers or exploits children.</li>
+      <li>Stay private. Never share personal information like your address, phone number or passwords, and never ask others for theirs.</li>
+      <li>Trade fairly. No scamming, and no selling or buying coins, items or accounts for real money.</li>
+      <li>Don't cheat, hack, modify the app, exploit bugs, or disrupt other players' games.</li>
+      <li>Don't pretend to be someone else, including us or Apple.</li>
+      <li>Follow the law.</li>
+    </ol>
+
+    <h2>5. Other players and what they say</h2>
+    <p>Pinch Park lets you talk and play live with people you don't know. We filter chat and names, and we give you Mute, Block and Report, but we can't watch or listen to every conversation, and voice chat is live and unrecorded. Other players' words and actions are their own, not ours, and we aren't responsible for them. Be careful about who you trust, never share personal information, never meet anyone from the game in person (and if you're under 18, tell a parent if anyone asks you to), and report anything that worries you. If someone is in danger, contact local emergency services first.</p>
+
+    <h2>6. Trades and gifts between players</h2>
+    <p>Trading and gifting are optional and at your own risk. Check every trade before you accept it. Trades and gifts are final, and we don't have to return, replace or restore items or coins lost through a trade, gift, scam or mistake, although we may choose to.</p>
+
+    <h2>7. What you share</h2>
+    <p>You keep ownership of your character name, chat, and photos you hang in your house ("your content"). You give us a free, worldwide, non-exclusive license to show and send your content to other players as part of running the game, for as long as you share it. Only share photos and content you have the right to share. Don't share photos of other people without their permission, or anything that's illegal, hateful, sexual, violent or someone else's copyrighted work. You're responsible for your content. We can hide or remove any content at any time.</p>
+
+    <h2>8. Moderation, bans and ending these Terms</h2>
+    <p>We may review reports and, at our discretion and without notice, warn, mute, ban or remove any player from online features, temporarily or permanently, if we believe they've broken these Terms or put others at risk. You lose access to online features while banned, and you won't get a refund for coins, items or subscriptions. You can stop playing at any time and delete your data in Friends → Safety → Delete My Data. Sections 3, 6, 7 and 10 through 18 still apply after these Terms end.</p>
+
+    <h2>9. Coins, items and purchases</h2>
+    <p>Coins and items are a limited, personal, non-transferable, revocable license to use inside the game. They are not money or property, have no real-world value, and can never be cashed out, sold, traded for money, or transferred outside the game. We may change, rebalance or remove coins, items, prices and features, and coins and items end if the game is discontinued or your access is ended under these Terms. All purchases are final and non-refundable, except where the law or Apple's refund policy says otherwise; refunds are handled by Apple. Use Restore Purchases in the coin shop to get the Starter Pack's Founder's Gold Aviators and VIP Club back on a new device. Coins from a purchase are given once. Winning table games pays coins for up to 10 wins a day. There is no gambling, betting, wagering or prizes of real value in the game, and table games (including pool) are games of skill played for fun.</p>
+
+    <h2>10. VIP Club subscription</h2>
+    <p>VIP Club renews automatically each month at the price shown in the game, charged to your Apple Account, until you cancel. Cancel at least 24 hours before the renewal date in Settings → Apple Account → Subscriptions on your Vision Pro. Canceling stops future renewals; you keep VIP until the end of the period you paid for. We may change VIP benefits or price; Apple will tell you before a price increase takes effect where required.</p>
+
+    <h2>11. Our content</h2>
+    <p>The game, its characters, art, sounds, music, code and the Pinch Park name belong to us or our licensors and are protected by law. Apart from playing the game as intended, you may not copy, sell, rent, reverse engineer, or make derivative works from it. If you send us ideas or feedback, we may use them freely without paying you.</p>
+
+    <h2>12. Copyright complaints</h2>
+    <p>If you believe something in the game infringes your copyright, email us with: your contact details; a description of the work; where it appears in the game (for example, the player's name and where you saw it); a statement that you have a good-faith belief the use isn't authorized; a statement, under penalty of perjury, that your notice is accurate and you own or are authorized to act for the owner; and your physical or electronic signature. We'll remove infringing material and may ban repeat infringers.</p>
+
+    <h2>13. The game is provided "as is"</h2>
+    <p>TO THE FULLEST EXTENT ALLOWED BY LAW, THE GAME AND EVERYTHING IN IT ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITH ALL FAULTS AND WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, SAFETY, TITLE AND NON-INFRINGEMENT. We don't promise that the game will always be available, error-free, secure, safe for every person, or that your progress, coins or items will never be lost. Online features depend on Apple's services and your internet connection, and we may change, pause or end any part of the game at any time. We aren't responsible for delays or failures caused by events outside our reasonable control, such as outages of Apple's or other third-party services, internet failures, natural disasters or changes in law.</p>
+
+    <h2>14. Limits on our liability</h2>
+    <p>TO THE FULLEST EXTENT ALLOWED BY LAW, PINCH PARK LLC AND ITS MEMBERS, MANAGERS AND CONTRACTORS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF DATA, PROGRESS, VIRTUAL ITEMS, PROFITS OR GOODWILL, OR FOR PERSONAL INJURY, ILLNESS OR PROPERTY DAMAGE (INCLUDING TO YOUR HEADSET OR HOME) ARISING FROM YOUR USE OF THE GAME OR YOUR SURROUNDINGS WHILE PLAYING, OR FOR THE CONDUCT OR CONTENT OF OTHER PLAYERS, EVEN IF WE WERE TOLD THESE WERE POSSIBLE. OUR TOTAL LIABILITY FOR ALL CLAIMS RELATING TO THE GAME OR THESE TERMS IS LIMITED TO THE GREATER OF THE AMOUNT YOU PAID US FOR THE GAME AND IN-GAME PURCHASES IN THE 12 MONTHS BEFORE THE CLAIM, OR US $50. These limits apply whatever the legal theory (contract, tort including negligence, product liability or otherwise). Nothing in these Terms limits liability that the law doesn't allow to be limited, such as for fraud, gross negligence or intentional misconduct, or (where the law requires) for death or personal injury caused by negligence; in places that don't allow some of these limits, they apply as far as the law allows.</p>
+
+    <h2>15. Your responsibility to us</h2>
+    <p>To the extent allowed by law, you agree to defend, compensate and hold harmless Pinch Park LLC and its members, managers and contractors for claims, losses and costs (including reasonable lawyers' fees) that come from your breaking these Terms or the law, your content, how you treat other players, or your use of the game in an unsafe place or way.</p>
+
+    <h2>16. Resolving disputes: informal first, then individual arbitration</h2>
+    <p><strong>Talk to us first.</strong> If you have a problem with the game, email us at pinchparkgame@yahoo.com with your name, your Game Center player name, a description of the problem and what you'd like us to do. We'll do the same if we have a problem with you. Both of us agree to try in good faith to settle it informally for 60 days before starting arbitration or a lawsuit.</p>
+    <p><strong>Arbitration.</strong> If we can't settle it, you and we agree that any dispute or claim relating to the game, purchases or these Terms will be resolved by binding individual arbitration administered by the American Arbitration Association (AAA) under its Consumer Arbitration Rules, instead of in court, except as described below. The Federal Arbitration Act governs this section. The arbitrator decides all issues, except that a court decides questions about whether the class action waiver below can be enforced. Arbitration can take place by video or phone, or in the county where you live. Payment of filing and arbitrator fees follows the AAA Consumer Rules, and if you can't afford your share, you can ask us to pay it and we'll consider it in good faith. The arbitrator can award the same individual relief a court could, but only for you individually.</p>
+    <p><strong>Exceptions.</strong> Either of us may instead bring an individual claim in small claims court if it qualifies, and either of us may ask a court to stop someone from infringing intellectual property or misusing the game.</p>
+    <p><strong>No class actions, no jury.</strong> YOU AND WE EACH GIVE UP THE RIGHT TO A JURY TRIAL AND TO TAKE PART IN A CLASS ACTION, COLLECTIVE ACTION OR REPRESENTATIVE PROCEEDING. Claims may only be brought individually. If this class action waiver is found unenforceable for a claim, that claim (and only that claim) goes to the courts described below instead of arbitration.</p>
+    <p><strong>Opt-out.</strong> You can opt out of this arbitration agreement by emailing pinchparkgame@yahoo.com within 30 days after you first agree to these Terms, with the subject "Arbitration Opt-Out", your name and your Game Center player name. Opting out doesn't affect the rest of these Terms.</p>
+    <p><strong>Law and courts.</strong> These Terms are governed by the laws of the State of Washington, USA, and applicable US federal law, without regard to conflict-of-law rules. Any claim not subject to arbitration must be brought in the state or federal courts located in Washington State, and you and we agree to their jurisdiction. Any claim must be brought within one year after it arises, where the law allows.</p>
+    <p><strong>Outside the US.</strong> If you live in the EU, the UK or another place whose laws don't allow these dispute terms or give you rights that can't be waived by contract (including the right to bring a claim in your local courts), this section applies only as far as those laws allow, and nothing here takes those rights away.</p>
+
+    <h2>17. Other legal terms</h2>
+    <p>If any part of these Terms can't be enforced, the rest still applies, and the unenforceable part is limited as little as needed. If we don't enforce a part right away, we can still enforce it later. These Terms, the Privacy Policy and Apple's Standard EULA are the whole agreement between you and us about the game. You can't transfer these Terms to someone else; we may transfer them if the game is sold or transferred. Headings are for convenience only. We may update these Terms as the game changes; we'll update this page and the date at the top, and tell players in the game if a change is significant. Changes don't apply to a dispute we already know about. If you keep playing after a change, you accept the new Terms.</p>
+
+    <h2>18. Trademarks and affiliation</h2>
+    <p>Pinch Park is an independent game and is not made, sponsored or endorsed by Apple Inc. Apple, Apple Vision Pro, Game Center, SharePlay, FaceTime and iCloud are trademarks of Apple Inc. Chess, checkers, pool and the other table games are traditional games; the game's own art and designs are original. Any resemblance of a player's character name to a real person is the player's doing, not ours.</p>
+
+    <h2>Contact</h2>
+    <p>Pinch Park LLC, Washington, USA</p>
+    <p class="contact"><a href="mailto:pinchparkgame@yahoo.com">pinchparkgame@yahoo.com</a></p>
+  </article>
+
+  <article id="support" aria-labelledby="tab-support" hidden>
+    <p>Need a hand? Most answers are below. If not, email us and we'll get back to you, usually within a day or two.</p>
+    <p class="contact"><a href="mailto:pinchparkgame@yahoo.com">pinchparkgame@yahoo.com</a></p>
+
+    <h2>Someone is being mean or unsafe</h2>
+    <p>Pinch the ••• button next to their name. <strong>Mute</strong> silences them, <strong>Block</strong> hides them and stops them contacting you, and <strong>Report</strong> sends us what happened so we can review it and remove them from online play.</p>
+
+    <h2>I bought coins or VIP and don't see them</h2>
+    <p>Open the coin shop and choose <strong>Restore Purchases</strong>. Make sure you're signed in with the same Apple Account you bought with. VIP Club is managed in Settings → Apple Account → Subscriptions. For refunds, use Apple's <a href="https://reportaproblem.apple.com">Report a Problem</a> page.</p>
+
+    <h2>My progress moved to a new Vision Pro</h2>
+    <p>Your character, house and coins follow you through iCloud. Sign in to the same Apple Account and turn on iCloud for the game, then open it and wait a moment.</p>
+
+    <h2>I want to delete my data</h2>
+    <p>Go to Friends → Safety → <strong>Delete My Data</strong>. This removes everything the game saved on your device and in your iCloud.</p>
+
+    <h2>I can't find other players or hear anyone</h2>
+    <p>Check that you're signed in to Game Center, that your internet is working, and that Screen Time allows multiplayer games and communication. Voice chat follows the Safety setting (everyone nearby, friends only, or nobody). Players under 13 don't have voice chat.</p>
+
+    <h2>I feel dizzy or sick while playing</h2>
+    <p>Take off the headset and rest until you feel completely fine, and don't drive until then. Turn on <strong>Comfort mode</strong> in Friends → Safety so turning happens in steps instead of a smooth spin, and keep break reminders on. If you have a seizure or any symptom in the safety warning, stop and see a doctor.</p>
+
+    <h2>How do I play the table games?</h2>
+    <p>Sit at a table and look at what you want, then pinch. In chess and checkers, pinch your piece, then a green dot. In pool, pinch the felt or a ball to aim, set the power, and press Shoot. The arrow buttons on the game panel move your view higher, lower, closer or farther.</p>
+  </article>
+
+  <footer>© 2026 Pinch Park LLC. All rights reserved.</footer>
+</div>
+
+<script>
+  (function () {
+    var docs = { privacy: document.getElementById('privacy'), terms: document.getElementById('terms'), support: document.getElementById('support') };
+    var tabs = { privacy: document.getElementById('tab-privacy'), terms: document.getElementById('tab-terms'), support: document.getElementById('tab-support') };
+    function show(name) {
+      if (!docs[name]) name = 'privacy';
+      Object.keys(docs).forEach(function (k) {
+        docs[k].hidden = k !== name;
+        if (k === name) tabs[k].setAttribute('aria-current', 'page'); else tabs[k].removeAttribute('aria-current');
+      });
+    }
+    Object.keys(tabs).forEach(function (k) {
+      tabs[k].addEventListener('click', function (e) {
+        e.preventDefault();
+        show(k);
+        try { history.replaceState(null, '', '/' + k + '.html'); } catch (err) {}
+        window.scrollTo(0, 0);
+      });
+    });
+    show((location.hash || '').replace('#', '') || 'privacy');
+    window.addEventListener('hashchange', function () { show((location.hash || '').replace('#', '') || 'privacy'); window.scrollTo(0, 0); });
+  })();
+</script>
+</body>
+</html>
