@@ -30,7 +30,7 @@
   @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
   body { margin: 0; background: var(--paper); color: var(--plum); font: 18px/1.6 var(--text); }
   a { color: var(--violet); text-underline-offset: 3px; }
-  a:focus-visible, button:focus-visible, summary:focus-visible, .ground:focus-visible {
+  a:focus-visible, button:focus-visible, summary:focus-visible {
     outline: 3px solid var(--gold); outline-offset: 3px; border-radius: 8px;
   }
   .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
@@ -53,19 +53,71 @@
   .store { display: inline-flex; flex-direction: column; background: #fff; color: var(--plum); border-radius: 16px; padding: 10px 22px; text-decoration: none; font: 800 18px var(--display); box-shadow: 0 10px 30px rgba(20, 0, 50, .3); }
   .store small { font: 600 12px var(--text); color: var(--muted); }
   .ghost { color: #fff; font-weight: 700; padding: 12px 6px; }
-  .ground { position: relative; z-index: 2; height: 250px; margin-top: 24px; cursor: pointer; }
-  .hint { position: absolute; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 3; margin: 0; font: 700 15px var(--display); background: rgba(24, 60, 32, .55); padding: 6px 14px; border-radius: 999px; white-space: nowrap; pointer-events: none; }
-  .walker { position: absolute; bottom: 70px; left: 30%; width: 92px; transform: translateX(-50%); transition: left 1.4s cubic-bezier(.4, .1, .3, 1); pointer-events: none; }
-  .walker svg { display: block; width: 100%; height: auto; transform-origin: 50% 100%; }
-  .walker.left svg { transform: scaleX(-1); }
-  .walker.walking .bob { animation: bob .35s ease-in-out infinite alternate; }
+  /* The lawn: an interactive slice of the Park. Walk, sit on a bench, or sit down at the chess table to play. */
+  .lawn { position: relative; z-index: 2; height: max(300px, 26vw); margin-top: 18px; outline: none; }
+  .lawn svg { position: absolute; inset: 0; width: 100%; height: 100%; display: block; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .lawn:focus-visible { box-shadow: inset 0 0 0 3px var(--gold); }
+  .lawn .hot { cursor: pointer; }
+  .lawn .hot:focus { outline: none; }
+  .lawn .hot:focus-visible .ring { stroke: var(--gold); stroke-width: 4; }
+  .lawn .ring { fill: rgba(0, 0, 0, 0); stroke: transparent; }
+  .lawn .hot:hover .lift { transform: translateY(-2px); }
+  .lift { transition: transform .15s ease-out; }
+  .pk-board-glow { fill: #FFE29A; opacity: 0; animation: boardglow 2.4s ease-in-out 1.2s 3; }
+  @keyframes boardglow { 0%, 100% { opacity: 0; } 50% { opacity: .55; } }
+  .pk-spray { stroke-dasharray: 6 8; animation: spray 1.1s linear infinite; }
+  @keyframes spray { to { stroke-dashoffset: -28; } }
+  #pk-me .sit { display: none; }
+  #pk-me.sitting .stand, #pk-me.sitting .shadow { display: none; }
+  #pk-me.sitting .sit { display: inline; }
+  #pk-me .bob { transform-box: fill-box; }
+  #pk-me.walking .bob { animation: bob .32s ease-in-out infinite alternate; }
   @keyframes bob { from { transform: translateY(0); } to { transform: translateY(-5px); } }
-  .ripple { position: absolute; width: 18px; height: 18px; margin: -9px 0 0 -9px; border: 3px solid #fff; border-radius: 50%; pointer-events: none; animation: ripple .7s ease-out forwards; }
+  #pk-me .arm-r { transform-box: view-box; transform-origin: 78px 70px; transition: transform .25s ease-out; }
+  #pk-me.waving .arm-r { transform: rotate(-150deg); }
+  .hint { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); z-index: 3; margin: 0; font: 700 15px var(--display); color: #fff; background: rgba(24, 60, 32, .62); padding: 6px 14px; border-radius: 999px; white-space: nowrap; pointer-events: none; transition: opacity .4s; }
+  .bubble { position: absolute; z-index: 4; transform: translate(-50%, -100%); max-width: min(260px, 70vw); background: #fff; color: var(--plum); font: 700 15px/1.35 var(--display); padding: 9px 14px; border-radius: 16px; box-shadow: 0 8px 22px rgba(20, 0, 50, .28); pointer-events: none; opacity: 0; transition: opacity .2s; text-align: center; }
+  .bubble::after { content: ""; position: absolute; left: 50%; bottom: -7px; margin-left: -8px; border: 8px solid transparent; border-bottom: 0; border-top-color: #fff; }
+  .bubble.show { opacity: 1; }
+  .ripple { position: absolute; z-index: 3; width: 18px; height: 18px; margin: -9px 0 0 -9px; border: 3px solid #fff; border-radius: 50%; pointer-events: none; animation: ripple .7s ease-out forwards; }
   @keyframes ripple { from { transform: scale(.4); opacity: 1; } to { transform: scale(3.2); opacity: 0; } }
   @media (prefers-reduced-motion: reduce) {
-    .walker { transition: none; }
-    .walker.walking .bob, .ripple { animation: none; }
+    #pk-me.walking .bob, .pk-spray, .pk-board-glow { animation: none; }
     .ripple { display: none; }
+    #pk-me .arm-r, .lift { transition: none; }
+  }
+
+  /* Chess at the Park */
+  .chess-dlg { border: 0; padding: 0; border-radius: 26px; width: min(520px, calc(100vw - 24px)); max-height: calc(100vh - 24px); background: var(--paper); color: var(--plum); box-shadow: 0 30px 80px rgba(20, 0, 50, .45); }
+  .chess-dlg::backdrop { background: rgba(28, 10, 60, .55); }
+  .chess-in { padding: 20px 20px 18px; }
+  .chess-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .chess-top h2 { font-size: 26px; }
+  .x { width: 40px; height: 40px; border-radius: 50%; border: 0; background: #EDE4F8; color: var(--plum); font: 800 22px/1 var(--display); cursor: pointer; }
+  .chess-status { margin: 6px 0 12px; font: 700 17px var(--display); color: var(--muted); min-height: 1.4em; }
+  .chess-status.win { color: var(--green); }
+  .chess-status.lose { color: #C2334E; }
+  .board { display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(8, 1fr); aspect-ratio: 1; border-radius: 14px; overflow: hidden; border: 6px solid #7B5234; box-shadow: 0 10px 24px rgba(60, 30, 10, .25); user-select: none; }
+  .sq { position: relative; min-width: 0; min-height: 0; overflow: hidden; border: 0; padding: 0; margin: 0; display: grid; place-items: center; background: #F4E9D8; font: 400 clamp(26px, 8vw, 46px)/1 "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2", "DejaVu Sans", serif; cursor: pointer; color: inherit; }
+  .sq.d { background: #B98557; }
+  .sq.last { background: #F3DC86; }
+  .sq.d.last { background: #D9B65A; }
+  .sq.sel { box-shadow: inset 0 0 0 4px var(--pink); }
+  .sq:focus-visible { outline: 3px solid var(--violet); outline-offset: -3px; z-index: 1; }
+  .sq.to::after { content: ""; position: absolute; width: 28%; height: 28%; border-radius: 50%; background: rgba(42, 20, 70, .32); }
+  .sq.to.cap::after { width: 86%; height: 86%; background: none; border: 4px solid rgba(42, 20, 70, .38); box-sizing: border-box; }
+  .sq.chk { background: radial-gradient(circle, #FF8FA8 0%, #F0679A 45%, transparent 75%), #F4E9D8; }
+  .sq.d.chk { background: radial-gradient(circle, #FF8FA8 0%, #F0679A 45%, transparent 75%), #B98557; }
+  .pc { pointer-events: none; }
+  .pc.w { color: #FFFDF7; -webkit-text-stroke: 1.4px #2A1446; paint-order: stroke fill; text-shadow: 0 2px 2px rgba(0, 0, 0, .25); }
+  .pc.b { color: #2A1446; text-shadow: 0 2px 2px rgba(0, 0, 0, .2); }
+  .files { display: grid; grid-template-columns: repeat(8, 1fr); text-align: center; font: 700 12px var(--text); color: var(--muted); margin-top: 4px; }
+  .chess-bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-top: 14px; }
+  .chess-bottom p { margin: 0; font-size: 14.5px; color: var(--muted); flex: 1 1 220px; }
+  .btn { border: 0; border-radius: 999px; background: var(--violet); color: #fff; font: 800 16px var(--display); padding: 10px 18px; cursor: pointer; }
+  @media (max-width: 640px) {
+    .lawn { height: auto; aspect-ratio: 840 / 360; }
+    .hint { font-size: 13px; bottom: 8px; }
   }
 
   /* ---------- Sections ---------- */
@@ -159,8 +211,6 @@
   @media (max-width: 560px) {
     .park nav .links { display: none; }
     .tables { grid-template-columns: 1fr; }
-    .ground { height: 240px; }
-    .walker { width: 72px; bottom: 60px; }
     section { padding: 72px 0; }
   }
 </style>
@@ -168,7 +218,7 @@
 <body>
 
 <header class="park">
-  <!-- The Park at dusk: sky, hills, fountain, lamp posts and a game table, drawn to match the app icon. -->
+  <!-- The Park at dusk: sky, sun and hills, drawn to match the app icon. The lawn below is interactive. -->
   <svg class="scene" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true">
     <defs>
       <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
@@ -207,36 +257,6 @@
     <!-- near hills -->
     <path d="M0 690 C 260 630, 520 650, 760 690 S 1180 640, 1440 670 V900 H0 Z" fill="#3E9A57"/>
     <path d="M0 760 C 300 720, 700 740, 1000 760 S 1300 750, 1440 740 V900 H0 Z" fill="#4CAF62"/>
-    <!-- path -->
-    <path d="M560 900 C 620 820, 700 770, 760 745 C 820 770, 900 820, 960 900 Z" fill="#D9C6A5" opacity=".9"/>
-    <!-- fountain -->
-    <g transform="translate(720 690)">
-      <ellipse cx="0" cy="40" rx="96" ry="22" fill="#C9C2D6"/>
-      <ellipse cx="0" cy="36" rx="84" ry="16" fill="#7CC8F0"/>
-      <rect x="-8" y="-6" width="16" height="42" fill="#C9C2D6"/>
-      <ellipse cx="0" cy="-6" rx="34" ry="9" fill="#C9C2D6"/>
-      <path d="M0 -60 C -10 -40, -26 -24, -30 -8 M0 -60 C 10 -40, 26 -24, 30 -8 M0 -64 V -10" stroke="#BDE6FA" stroke-width="5" fill="none" stroke-linecap="round" opacity=".9"/>
-    </g>
-    <!-- lamp posts with warm glow -->
-    <g>
-      <circle cx="420" cy="640" r="56" fill="url(#glow)"/><rect x="417" y="640" width="6" height="96" fill="#2A1446"/><circle cx="420" cy="640" r="11" fill="#FFE29A"/>
-      <circle cx="1030" cy="640" r="56" fill="url(#glow)"/><rect x="1027" y="640" width="6" height="96" fill="#2A1446"/><circle cx="1030" cy="640" r="11" fill="#FFE29A"/>
-    </g>
-    <!-- a picnic game table with a chessboard -->
-    <g transform="translate(1150 735)">
-      <rect x="-70" y="0" width="140" height="14" rx="5" fill="#9B6A43"/>
-      <rect x="-60" y="14" width="10" height="44" fill="#7B5234"/><rect x="50" y="14" width="10" height="44" fill="#7B5234"/>
-      <rect x="-90" y="34" width="180" height="9" rx="4" fill="#9B6A43"/>
-      <g transform="translate(-24 -6)">
-        <rect width="48" height="8" fill="#F4E9D8"/><rect width="12" height="4" fill="#3A2A20"/><rect x="24" width="12" height="4" fill="#3A2A20"/>
-        <rect x="12" y="4" width="12" height="4" fill="#3A2A20"/><rect x="36" y="4" width="12" height="4" fill="#3A2A20"/>
-      </g>
-    </g>
-    <!-- a bench -->
-    <g transform="translate(250 760)">
-      <rect x="0" y="0" width="120" height="10" rx="4" fill="#A9744C"/><rect x="0" y="-26" width="120" height="8" rx="4" fill="#A9744C"/>
-      <rect x="10" y="10" width="8" height="30" fill="#5B3B26"/><rect x="102" y="10" width="8" height="30" fill="#5B3B26"/>
-    </g>
   </svg>
 
   <div class="wrap">
@@ -259,28 +279,204 @@
     </div>
   </div>
 
-  <div class="ground" id="ground" tabindex="0" role="application"
-       aria-label="The Park's lawn. Click or tap the grass, or use the left and right arrow keys, to walk your character there.">
-    <div class="walker" id="walker" aria-hidden="true">
-      <svg viewBox="0 0 100 150">
-        <g class="bob">
-          <ellipse cx="50" cy="146" rx="26" ry="4" fill="#1F4D2C" opacity=".35"/>
-          <rect x="34" y="104" width="12" height="40" rx="5" fill="#2E3A5C"/><rect x="54" y="104" width="12" height="40" rx="5" fill="#2E3A5C"/>
-          <rect x="30" y="140" width="18" height="8" rx="4" fill="#fff"/><rect x="52" y="140" width="18" height="8" rx="4" fill="#fff"/>
-          <rect x="26" y="62" width="48" height="50" rx="16" fill="#F0679A"/>
-          <rect x="16" y="68" width="12" height="34" rx="6" fill="#F0679A"/><rect x="72" y="68" width="12" height="34" rx="6" fill="#F0679A"/>
-          <circle cx="50" cy="40" r="25" fill="#C98B62"/>
-          <path d="M24 34 C 26 14, 74 14, 76 34 Z" fill="#2F6FD6"/>
-          <rect x="62" y="28" width="26" height="8" rx="4" fill="#2F6FD6"/>
-          <rect x="30" y="38" width="17" height="11" rx="5" fill="#FF7FB0"/><rect x="53" y="38" width="17" height="11" rx="5" fill="#FF7FB0"/>
-          <rect x="46" y="41" width="8" height="3" fill="#FF7FB0"/>
-          <path d="M41 56 Q 50 63, 59 56" stroke="#5A2E1E" stroke-width="3" fill="none" stroke-linecap="round"/>
+  <div class="lawn" id="lawn" tabindex="0" role="application"
+       aria-label="The Park's lawn. Click or tap the grass, or use the arrow keys, to walk. Click a bench to sit, or the chessboard to play chess.">
+    <svg id="pk-stage" viewBox="0 0 1440 360" preserveAspectRatio="xMidYMax slice">
+      <defs>
+        <radialGradient id="pk-glow" cx=".5" cy=".5" r=".5">
+          <stop offset="0" stop-color="#FFE9A6" stop-opacity=".85"/><stop offset="1" stop-color="#FFE9A6" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="pk-grass" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stop-color="#3E9A57"/><stop offset=".55" stop-color="#46A85E"/><stop offset="1" stop-color="#4FB466"/>
+        </linearGradient>
+        <pattern id="pk-check" width="16" height="8" patternUnits="userSpaceOnUse">
+          <rect width="16" height="8" fill="#F4E9D8"/><rect width="8" height="4" fill="#3A2A20"/><rect x="8" y="4" width="8" height="4" fill="#3A2A20"/>
+        </pattern>
+      </defs>
+
+      <!-- lawn -->
+      <path id="pk-grass" d="M0 112 C 240 84, 470 98, 720 104 S 1200 82, 1440 104 V360 H0 Z" fill="url(#pk-grass)"/>
+      <path d="M0 150 C 300 128, 640 140, 980 146 S 1300 136, 1440 142" stroke="#58BC6E" stroke-width="2" fill="none" opacity=".5"/>
+      <path d="M660 196 C 640 250, 600 310, 560 360 H 880 C 840 310, 800 250, 780 196 Z" fill="#D9C6A5" opacity=".85"/>
+      <g fill="#FFF3B0" opacity=".9">
+        <circle cx="120" cy="228" r="3"/><circle cx="136" cy="236" r="2.5"/><circle cx="300" cy="330" r="3"/><circle cx="560" cy="220" r="2.5"/>
+        <circle cx="900" cy="236" r="2.5"/><circle cx="1150" cy="214" r="3"/><circle cx="1290" cy="330" r="3"/><circle cx="1305" cy="322" r="2.5"/>
+      </g>
+      <g fill="#F7A6C4" opacity=".9"><circle cx="128" cy="244" r="2.5"/><circle cx="574" cy="228" r="2.5"/><circle cx="1162" cy="222" r="2.5"/><circle cx="312" cy="338" r="2.5"/></g>
+
+      <!-- everything that stands on the lawn is sorted by depth (data-y = where it touches the ground) -->
+      <g id="pk-things">
+        <g data-y="128" class="hot" id="pk-darts" transform="translate(200 128)" tabindex="0" role="button" aria-label="Darts" data-say="Darts! In Pinch Park you throw with your real hand." data-go="200,150">
+          <rect class="ring" x="-34" y="-136" width="68" height="140" rx="12"/>
+          <g class="lift">
+            <rect x="-14" y="-4" width="28" height="5" rx="2" fill="#4A2F1E"/>
+            <rect x="-3" y="-96" width="6" height="94" fill="#5B3B26"/>
+            <circle cy="-104" r="25" fill="#2A1A14"/><circle cy="-104" r="21" fill="#F1E3C8"/>
+            <g fill="#222"><path d="M0 -104 L-10 -122 A21 21 0 0 1 10 -122 Z"/><path d="M0 -104 L19 -98 A21 21 0 0 1 12 -87 Z"/><path d="M0 -104 L-12 -87 A21 21 0 0 1 -19 -98 Z"/></g>
+            <circle cy="-104" r="13" fill="none" stroke="#2E8B57" stroke-width="3"/><circle cy="-104" r="20" fill="none" stroke="#E9452F" stroke-width="2.5"/>
+            <circle cy="-104" r="3.5" fill="#E9452F"/>
+            <path d="M6 -108 l16 -8" stroke="#555" stroke-width="2"/><path d="M22 -116 l6 -5 m-6 5 l7 1" stroke="#F0679A" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
         </g>
-      </svg>
-    </div>
-    <p class="hint" id="hint">Click the grass to walk there</p>
+
+        <g data-y="140" class="hot" id="pk-bags" transform="translate(470 140)" tabindex="0" role="button" aria-label="Bean Bag Toss" data-say="Bean Bag Toss: three points if it drops in the hole!" data-go="470,160">
+          <rect class="ring" x="-46" y="-40" width="92" height="46" rx="12"/>
+          <g class="lift">
+            <path d="M-24 -2 L-22 -30 M24 -2 L22 -30" stroke="#7B5234" stroke-width="4"/>
+            <path d="M-32 0 L32 0 L25 -30 L-25 -30 Z" fill="#E9B44C"/><path d="M-32 0 L32 0 L32 3 L-32 3 Z" fill="#B8862F"/>
+            <path d="M-6 -30 L6 -30 L8 0 L-8 0 Z" fill="#3B1F8C" opacity=".85"/>
+            <ellipse cy="-21" rx="6" ry="3.4" fill="#2A1A14"/>
+            <rect x="-17" y="-14" width="11" height="8" rx="2.5" fill="#E9452F" transform="rotate(-14 -11 -10)"/>
+            <rect x="38" y="-6" width="11" height="8" rx="2.5" fill="#3A86FF" transform="rotate(10 43 -2)"/>
+          </g>
+        </g>
+
+        <g data-y="124" aria-hidden="true">
+          <circle cx="600" cy="38" r="40" fill="url(#pk-glow)"/>
+          <rect x="597" y="38" width="6" height="86" fill="#2A1446"/><circle cx="600" cy="38" r="9" fill="#FFE29A"/>
+        </g>
+        <g data-y="124" aria-hidden="true">
+          <circle cx="845" cy="38" r="40" fill="url(#pk-glow)"/>
+          <rect x="842" y="38" width="6" height="86" fill="#2A1446"/><circle cx="845" cy="38" r="9" fill="#FFE29A"/>
+        </g>
+
+        <g data-y="192" class="hot" id="pk-fountain" transform="translate(720 192)" tabindex="0" role="button" aria-label="Fountain" data-say="Everyone meets at the fountain. Say hi!" data-go="720,236">
+          <rect class="ring" x="-104" y="-112" width="208" height="122" rx="16"/>
+          <ellipse cy="0" rx="98" ry="22" fill="#B9B1C9"/>
+          <ellipse cy="-6" rx="98" ry="20" fill="#C9C2D6"/>
+          <ellipse cy="-8" rx="86" ry="15" fill="#7CC8F0"/>
+          <ellipse cx="-26" cy="-10" rx="18" ry="3" fill="#BDE6FA" opacity=".8"/>
+          <rect x="-8" y="-52" width="16" height="44" fill="#C9C2D6"/>
+          <ellipse cy="-52" rx="34" ry="9" fill="#C9C2D6"/><ellipse cy="-54" rx="28" ry="6" fill="#7CC8F0"/>
+          <path class="pk-spray" d="M0 -104 C -10 -84, -26 -68, -30 -54 M0 -104 C 10 -84, 26 -68, 30 -54 M0 -108 V -56" stroke="#D6F0FC" stroke-width="5" fill="none" stroke-linecap="round"/>
+        </g>
+
+        <g data-y="134" class="hot" id="pk-golf" transform="translate(960 134)" tabindex="0" role="button" aria-label="Mini Golf" data-say="Mini Golf: 18 holes, windmills, water and lava." data-go="930,158">
+          <rect class="ring" x="-56" y="-70" width="112" height="78" rx="12"/>
+          <g class="lift">
+            <ellipse cy="-2" rx="54" ry="11" fill="#6ACB80"/>
+            <ellipse cx="14" cy="-3" rx="5.5" ry="2.2" fill="#1D3B26"/>
+            <rect x="12.5" y="-62" width="3" height="60" fill="#FAFAFA"/>
+            <path d="M15.5 -62 L42 -54 L15.5 -46 Z" fill="#F0679A"/>
+            <circle cx="-22" cy="-5" r="3.4" fill="#fff"/>
+          </g>
+        </g>
+
+        <g data-y="142" class="hot" id="pk-tt" transform="translate(1230 142)" tabindex="0" role="button" aria-label="Table Tennis" data-say="Table Tennis: swing your real hand to hit." data-go="1230,170">
+          <rect class="ring" x="-78" y="-46" width="156" height="52" rx="12"/>
+          <g class="lift">
+            <rect x="-56" y="-18" width="5" height="18" fill="#2A1446"/><rect x="51" y="-18" width="5" height="18" fill="#2A1446"/>
+            <path d="M-62 -32 L62 -32 L72 -21 L-72 -21 Z" fill="#1F4FB8"/>
+            <rect x="-72" y="-21" width="144" height="4" fill="#163A87"/>
+            <path d="M-67 -26.5 L67 -26.5" stroke="#fff" stroke-width="1.2" opacity=".85"/>
+            <rect x="-2.5" y="-40" width="5" height="22" fill="#EDEDED" opacity=".95"/>
+            <circle cx="-38" cy="-29" r="6.5" fill="#E9452F"/><rect x="-46" y="-27" width="8" height="3" rx="1.5" fill="#7B5234" transform="rotate(30 -42 -25)"/>
+            <circle cx="22" cy="-44" r="2.8" fill="#FFF7E0"/>
+          </g>
+        </g>
+
+        <g data-y="128" class="hot" id="pk-archery" transform="translate(1360 128)" tabindex="0" role="button" aria-label="Archery" data-say="Archery: draw the string with your real hands." data-go="1350,152">
+          <rect class="ring" x="-40" y="-104" width="80" height="110" rx="12"/>
+          <g class="lift">
+            <path d="M0 -44 L-20 0 M0 -44 L20 0 M0 -44 L0 0" stroke="#7B5234" stroke-width="4"/>
+            <circle cy="-66" r="28" fill="#FAFAFA"/><circle cy="-66" r="23" fill="#2A2A2A"/><circle cy="-66" r="17.5" fill="#3A86FF"/>
+            <circle cy="-66" r="12" fill="#E9452F"/><circle cy="-66" r="6" fill="#FFD24A"/>
+            <path d="M3 -68 l18 -10" stroke="#5B3B26" stroke-width="2"/><path d="M21 -78 l5 -6 m-5 6 l8 0" stroke="#3E9A57" stroke-width="2.5" stroke-linecap="round"/>
+          </g>
+        </g>
+
+        <g data-y="314" aria-hidden="true">
+          <ellipse cx="60" cy="300" rx="70" ry="44" fill="#2F7A45"/><ellipse cx="120" cy="312" rx="50" ry="30" fill="#367F4B"/>
+        </g>
+        <g data-y="330" aria-hidden="true">
+          <ellipse cx="1400" cy="312" rx="72" ry="46" fill="#2F7A45"/><ellipse cx="1340" cy="328" rx="46" ry="28" fill="#367F4B"/>
+        </g>
+
+        <!-- the bench: two seats -->
+        <g data-y="282" class="hot" id="pk-bench" transform="translate(400 282)" tabindex="0" role="button" aria-label="Bench: sit down" data-seat="bench">
+          <rect class="ring" x="-100" y="-96" width="200" height="104" rx="14"/>
+          <rect x="-82" y="-86" width="7" height="48" fill="#5B3B26"/><rect x="75" y="-86" width="7" height="48" fill="#5B3B26"/>
+          <rect x="-94" y="-86" width="188" height="11" rx="5" fill="#B57D52"/><rect x="-94" y="-68" width="188" height="11" rx="5" fill="#A9744C"/>
+          <rect x="-80" y="-36" width="8" height="30" fill="#4A2F1E"/><rect x="72" y="-36" width="8" height="30" fill="#4A2F1E"/>
+          <rect x="-96" y="-44" width="192" height="12" rx="5" fill="#A9744C"/><rect x="-96" y="-34" width="192" height="4" rx="2" fill="#8C5D3B"/>
+          <rect x="-88" y="-30" width="9" height="30" fill="#5B3B26"/><rect x="79" y="-30" width="9" height="30" fill="#5B3B26"/>
+        </g>
+
+        <!-- the chess table: the far bench (you sit here, facing us) and the table with its board -->
+        <g data-y="262" class="hot" id="pk-chessbench" transform="translate(1010 262)" tabindex="0" role="button" aria-label="Chess table bench: sit down" data-seat="chess">
+          <rect class="ring" x="-112" y="-40" width="224" height="44" rx="12"/>
+          <rect x="-100" y="-28" width="8" height="28" fill="#4A2F1E"/><rect x="92" y="-28" width="8" height="28" fill="#4A2F1E"/>
+          <rect x="-108" y="-36" width="216" height="10" rx="4" fill="#9B6A43"/>
+        </g>
+        <g data-y="304" id="pk-chesstable" transform="translate(1010 304)">
+          <path d="M-84 -60 L-96 0 M84 -60 L96 0" stroke="#6E4930" stroke-width="10" stroke-linecap="round"/>
+          <rect x="-112" y="-74" width="224" height="10" rx="4" fill="#B07A50"/>
+          <rect x="-112" y="-66" width="224" height="10" rx="3" fill="#8C5D3B"/>
+          <g class="hot" id="pk-chess" tabindex="0" role="button" aria-label="Chessboard: play a game of chess">
+            <rect class="ring" x="-52" y="-112" width="104" height="52" rx="12"/>
+            <ellipse class="pk-board-glow" cy="-74" rx="62" ry="22"/>
+            <g class="lift">
+              <path d="M-36 -82 L36 -82 L42 -70 L-42 -70 Z" fill="url(#pk-check)" stroke="#5B3B26" stroke-width="1.5"/>
+              <g fill="#FFFDF7" stroke="#2A1446" stroke-width="1.4">
+                <path d="M-30 -75 h8 l-1.5 -6 h-5z"/><circle cx="-26" cy="-84" r="3.4"/>
+                <path d="M-14 -73 h9 l-2 -8 h-5z"/><rect x="-12.8" y="-90" width="6.6" height="9" rx="2"/><rect x="-10.2" y="-96" width="1.4" height="6"/><rect x="-12" y="-94" width="5" height="1.4"/>
+              </g>
+              <g fill="#2A1446">
+                <path d="M10 -77 h8 l-1.5 -6 h-5z"/><circle cx="14" cy="-86" r="3.4"/>
+                <path d="M24 -75 h10 l-1.6 -5 h-1.4 v-4 c0 -4 -2 -6 -5.5 -7 l-1.4 2.4 -2 1.2 0 2.6 3 -.3 -2 4.8z"/>
+              </g>
+            </g>
+          </g>
+        </g>
+
+        <!-- you -->
+        <g id="pk-me" data-y="300" aria-hidden="true">
+          <g class="bob">
+            <ellipse class="shadow" cx="50" cy="146" rx="26" ry="4" fill="#1F4D2C" opacity=".35"/>
+            <g class="stand">
+              <rect x="34" y="104" width="12" height="40" rx="5" fill="#2E3A5C"/><rect x="54" y="104" width="12" height="40" rx="5" fill="#2E3A5C"/>
+              <rect x="30" y="140" width="18" height="8" rx="4" fill="#fff"/><rect x="52" y="140" width="18" height="8" rx="4" fill="#fff"/>
+            </g>
+            <g class="sit">
+              <rect x="31" y="100" width="17" height="16" rx="7" fill="#2E3A5C"/><rect x="52" y="100" width="17" height="16" rx="7" fill="#2E3A5C"/>
+              <rect x="34" y="110" width="12" height="28" rx="5" fill="#26304D"/><rect x="54" y="110" width="12" height="28" rx="5" fill="#26304D"/>
+              <rect x="30" y="134" width="18" height="8" rx="4" fill="#fff"/><rect x="52" y="134" width="18" height="8" rx="4" fill="#fff"/>
+            </g>
+            <rect x="26" y="62" width="48" height="50" rx="16" fill="#F0679A"/>
+            <rect x="16" y="68" width="12" height="34" rx="6" fill="#F0679A"/>
+            <g class="arm-r"><rect x="72" y="68" width="12" height="34" rx="6" fill="#F0679A"/><circle cx="78" cy="102" r="6" fill="#C98B62"/></g>
+            <circle cx="22" cy="102" r="6" fill="#C98B62"/>
+            <path d="M38 66 Q 50 76, 62 66" stroke="#FFD24A" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <circle cx="50" cy="40" r="25" fill="#C98B62"/>
+            <path d="M24 34 C 26 14, 74 14, 76 34 Z" fill="#2F6FD6"/>
+            <rect x="62" y="28" width="26" height="8" rx="4" fill="#2F6FD6"/>
+            <rect x="30" y="38" width="17" height="11" rx="5" fill="#FF7FB0"/><rect x="53" y="38" width="17" height="11" rx="5" fill="#FF7FB0"/>
+            <rect x="46" y="41" width="8" height="3" fill="#FF7FB0"/>
+            <path d="M41 56 Q 50 63, 59 56" stroke="#5A2E1E" stroke-width="3" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+      </g>
+    </svg>
+    <div class="bubble" id="pk-bubble" role="status" aria-live="polite"></div>
+    <p class="hint" id="hint">Click the grass to walk. Sit on the bench, or click the chessboard to play.</p>
   </div>
 </header>
+
+<dialog class="chess-dlg" id="chess" aria-labelledby="chess-title">
+  <div class="chess-in">
+    <div class="chess-top">
+      <h2 id="chess-title">Chess at the Park</h2>
+      <button class="x" id="chess-close" type="button" aria-label="Close chess">×</button>
+    </div>
+    <p class="chess-status" id="chess-status" role="status" aria-live="polite"></p>
+    <div class="board" id="chess-board" role="group" aria-label="Chessboard. White is at the bottom."></div>
+    <div class="files" aria-hidden="true"><span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span></div>
+    <div class="chess-bottom">
+      <p>In Pinch Park you play at real tables with friends, or the computer. Chess is 1 of 21 games. <a href="#games" id="chess-more">See them all</a></p>
+      <button class="btn" id="chess-new" type="button">New game</button>
+    </div>
+  </div>
+</dialog>
 
 <main>
   <section id="games">
@@ -735,41 +931,350 @@
 </footer>
 
 <script>
-  // Pinch (click) the grass and your character walks there, like in the game.
+  // The Park lawn: pinch (click) the grass to walk, click a bench to sit, click the chessboard to play.
   (function () {
-    var ground = document.getElementById('ground');
-    var walker = document.getElementById('walker');
+    var lawn = document.getElementById('lawn');
+    var svg = document.getElementById('pk-stage');
+    var things = document.getElementById('pk-things');
+    var me = document.getElementById('pk-me');
+    var bubble = document.getElementById('pk-bubble');
     var hint = document.getElementById('hint');
+    if (!lawn || !svg || !me) return;
     var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    var pos = 30, timer = null;
-    if (hint && window.matchMedia('(hover: none)').matches) hint.textContent = 'Tap the grass to walk there';
-    function walkTo(pct) {
-      pct = Math.max(6, Math.min(94, pct));
-      if (Math.abs(pct - pos) < 0.5) return;
-      walker.classList.toggle('left', pct < pos);
-      walker.classList.add('walking');
-      walker.style.left = pct + '%';
-      pos = pct;
-      clearTimeout(timer);
-      timer = setTimeout(function () { walker.classList.remove('walking'); }, reduce ? 0 : 1400);
-      if (hint) { hint.remove(); hint = null; }
+    if (hint && window.matchMedia('(hover: none)').matches) hint.textContent = 'Tap to walk, sit on the bench, or play chess.';
+
+    var TOP = 150, BOTTOM = 346;                  // walkable band of the lawn (stage units)
+    var FOUNTAIN = { x: 720, y: 186, rx: 112, ry: 30 };
+    var SEATS = {
+      bench: [{ x: 356, y: 240, front: 300, z: 283 }, { x: 444, y: 240, front: 300, z: 283 }],
+      chess: [{ x: 1010, y: 228, front: 250, z: 263 }]
+    };
+    var st = { x: 560, y: 300, dir: 1, seat: null, anim: null, then: null };
+
+    function scaleAt(y) { return 0.52 + 0.42 * (Math.max(TOP - 40, Math.min(BOTTOM, y)) - TOP) / (BOTTOM - TOP); }
+    function draw() {
+      var s = scaleAt(st.seat ? st.seat.front - 8 : st.y);
+      var ay = st.seat ? 110 : 148;   // anchor: hips when sitting, feet when standing
+      me.setAttribute('transform', 'translate(' + st.x.toFixed(1) + ' ' + st.y.toFixed(1) + ') scale(' + (s * st.dir).toFixed(3) + ' ' + s.toFixed(3) + ') translate(-50 -' + ay + ')');
+      me.setAttribute('data-y', st.seat ? st.seat.z : st.y);
+      sortDepth();
+      placeBubble();
     }
-    ground.addEventListener('click', function (e) {
-      var r = ground.getBoundingClientRect();
-      walkTo((e.clientX - r.left) / r.width * 100);
+    var lastOrder = '';
+    function sortDepth() {
+      var kids = Array.prototype.slice.call(things.children);
+      kids.sort(function (a, b) { return (+a.getAttribute('data-y')) - (+b.getAttribute('data-y')) || (a === me ? 1 : b === me ? -1 : 0); });
+      var order = kids.map(function (k) { return k.id || k.getAttribute('data-y'); }).join();
+      if (order === lastOrder) return;
+      lastOrder = order;
+      kids.forEach(function (k) { things.appendChild(k); });
+    }
+    // Which part of the stage is on screen (it is cropped on narrow screens).
+    function visibleX() {
+      var m = svg.getScreenCTM(); if (!m) return [0, 1440];
+      var r = svg.getBoundingClientRect(), inv = m.inverse(), p = svg.createSVGPoint();
+      p.x = r.left; p.y = r.top; var a = p.matrixTransform(inv).x;
+      p.x = r.right; var b = p.matrixTransform(inv).x;
+      return [Math.max(0, a), Math.min(1440, b)];
+    }
+    function toStage(cx, cy) {
+      var p = svg.createSVGPoint(); p.x = cx; p.y = cy;
+      return p.matrixTransform(svg.getScreenCTM().inverse());
+    }
+    function clampSpot(x, y) {
+      var v = visibleX();
+      x = Math.max(v[0] + 45, Math.min(v[1] - 45, x));
+      y = Math.max(TOP, Math.min(BOTTOM, y));
+      var dx = (x - FOUNTAIN.x) / FOUNTAIN.rx, dy = (y - FOUNTAIN.y) / FOUNTAIN.ry, d = Math.sqrt(dx * dx + dy * dy);
+      if (d < 1) { // don't walk into the fountain: step to its edge
+        if (d < 0.01) { dx = 0; dy = 1; d = 1; }
+        x = FOUNTAIN.x + dx / d * FOUNTAIN.rx; y = Math.max(TOP, FOUNTAIN.y + dy / d * FOUNTAIN.ry);
+      }
+      return { x: x, y: y };
+    }
+    function standUp() {
+      if (!st.seat) return;
+      st.y = st.seat.front; st.seat = null; me.classList.remove('sitting');
+    }
+    function walkTo(x, y, then) {
+      standUp();
+      hideBubble();
+      if (hint) { hint.style.opacity = '0'; var h = hint; hint = null; setTimeout(function () { h.remove(); }, 400); }
+      var t = clampSpot(x, y), fx = st.x, fy = st.y, dist = Math.hypot(t.x - fx, t.y - fy);
+      if (Math.abs(t.x - fx) > 2) st.dir = t.x < fx ? -1 : 1;
+      cancelAnimationFrame(st.anim);
+      if (reduce || dist < 3) { st.x = t.x; st.y = t.y; draw(); if (then) then(); return; }
+      var dur = Math.max(250, dist / 300 * 1000), t0 = performance.now();
+      me.classList.add('walking');
+      (function step(now) {
+        var k = Math.min(1, (now - t0) / dur), e = k < .5 ? 2 * k * k : 1 - Math.pow(-2 * k + 2, 2) / 2;
+        st.x = fx + (t.x - fx) * e; st.y = fy + (t.y - fy) * e; draw();
+        if (k < 1) st.anim = requestAnimationFrame(step);
+        else { me.classList.remove('walking'); if (then) then(); }
+      })(t0);
+    }
+    function sitOn(kind, then) {
+      var list = SEATS[kind], seat = list[0];
+      if (st.seat && st.seat === seat && kind === 'chess') { if (then) then(); return; }
+      if (list.length > 1) { // the bench seat nearest to you (or the other one if you're already on it)
+        seat = list.slice().sort(function (a, b) { return Math.abs(a.x - st.x) - Math.abs(b.x - st.x); })[st.seat && list.indexOf(st.seat) >= 0 ? 1 : 0];
+      }
+      walkTo(seat.x, seat.front, function () {
+        st.seat = seat; st.x = seat.x; st.y = seat.y; st.dir = 1;
+        me.classList.add('sitting'); draw();
+        if (then) then();
+      });
+    }
+
+    var bubbleTimer = null;
+    function say(text) {
+      bubble.textContent = text; bubble.classList.add('show'); placeBubble();
+      me.classList.add('waving');
+      clearTimeout(bubbleTimer);
+      bubbleTimer = setTimeout(hideBubble, 3200);
+    }
+    function hideBubble() { bubble.classList.remove('show'); me.classList.remove('waving'); }
+    function placeBubble() {
+      if (!bubble.classList.contains('show')) return;
+      var m = svg.getScreenCTM(); if (!m) return;
+      var s = scaleAt(st.seat ? st.seat.front - 8 : st.y), headY = st.y - (st.seat ? 110 - 12 : 148 - 12) * s;
+      var p = svg.createSVGPoint(); p.x = st.x; p.y = headY; p = p.matrixTransform(m);
+      var r = lawn.getBoundingClientRect();
+      var x = Math.max(110, Math.min(r.width - 110, p.x - r.left));
+      bubble.style.left = x + 'px'; bubble.style.top = (p.y - r.top - 10) + 'px';
+    }
+
+    function act(el) {
+      if (el.id === 'pk-chess') { sitOn('chess', function () { window.pkOpenChess && window.pkOpenChess(); }); return; }
+      var seat = el.getAttribute('data-seat');
+      if (seat) { sitOn(seat); return; }
+      var go = (el.getAttribute('data-go') || '').split(',');
+      var msg = el.getAttribute('data-say');
+      if (go.length === 2) walkTo(+go[0], +go[1], function () { if (msg) say(msg); });
+    }
+    svg.addEventListener('click', function (e) {
+      var hot = e.target.closest && e.target.closest('.hot');
+      if (hot) { act(hot); return; }
+      var p = toStage(e.clientX, e.clientY);
+      walkTo(p.x, p.y);
       if (!reduce) {
-        var dot = document.createElement('span');
+        var r = lawn.getBoundingClientRect(), dot = document.createElement('span');
         dot.className = 'ripple';
-        dot.style.left = (e.clientX - r.left) + 'px';
-        dot.style.top = (e.clientY - r.top) + 'px';
-        ground.appendChild(dot);
+        dot.style.left = (e.clientX - r.left) + 'px'; dot.style.top = (e.clientY - r.top) + 'px';
+        lawn.appendChild(dot);
         setTimeout(function () { dot.remove(); }, 700);
       }
     });
-    ground.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') { walkTo(pos - 12); e.preventDefault(); }
-      if (e.key === 'ArrowRight') { walkTo(pos + 12); e.preventDefault(); }
+    lawn.addEventListener('keydown', function (e) {
+      var hot = e.target.closest && e.target.closest('.hot');
+      if (hot && (e.key === 'Enter' || e.key === ' ')) { act(hot); e.preventDefault(); return; }
+      var k = { ArrowLeft: [-60, 0], ArrowRight: [60, 0], ArrowUp: [0, -30], ArrowDown: [0, 30] }[e.key];
+      if (k) { walkTo((st.seat ? st.seat.x : st.x) + k[0], (st.seat ? st.seat.front : st.y) + k[1]); e.preventDefault(); }
     });
+    window.addEventListener('resize', function () {
+      if (!st.seat) { var c = clampSpot(st.x, st.y); st.x = c.x; st.y = c.y; }
+      draw();
+    });
+    draw();
+    window.pkPark = { st: st, walkTo: walkTo, sitOn: sitOn, act: act }; // handy for testing
+  })();
+
+  // Chess at the Park: you play white against the computer.
+  (function () {
+    var dlg = document.getElementById('chess'), boardEl = document.getElementById('chess-board'), statusEl = document.getElementById('chess-status');
+    if (!dlg || !boardEl) return;
+    var KN = [[1,2],[2,1],[2,-1],[1,-2],[-1,-2],[-2,-1],[-2,1],[-1,2]], KS = [[1,0],[1,1],[0,1],[-1,1],[-1,0],[-1,-1],[0,-1],[1,-1]];
+    var ST = [[1,0],[-1,0],[0,1],[0,-1]], DG = [[1,1],[1,-1],[-1,1],[-1,-1]];
+    var NAMES = ['', 'pawn', 'knight', 'bishop', 'rook', 'queen', 'king'], GLYPH = ['', '♟', '♞', '♝', '♜', '♛', '♚'];
+    var VAL = [0, 100, 310, 330, 500, 900, 0];
+
+    function initial() {
+      var b = [], back = [4, 2, 3, 5, 6, 3, 2, 4], i;
+      for (i = 0; i < 64; i++) b.push(0);
+      for (i = 0; i < 8; i++) { b[i] = back[i]; b[8 + i] = 1; b[48 + i] = -1; b[56 + i] = -back[i]; }
+      return { b: b, white: true, castle: [true, true, true, true], ep: -1, last: null, inCheck: false, quiet: 0 };
+    }
+    function pseudo(s, f, attacks) {
+      var p = s.b[f], out = [];
+      if (!p) return out;
+      var white = p > 0, r = f >> 3, c = f & 7, a = Math.abs(p);
+      function ins(rr, cc) { return rr >= 0 && rr < 8 && cc >= 0 && cc < 8; }
+      function add(rr, cc) {
+        if (!ins(rr, cc)) return false;
+        var t = s.b[rr * 8 + cc];
+        if (t === 0) { out.push(rr * 8 + cc); return true; }
+        if ((t > 0) !== white) out.push(rr * 8 + cc);
+        return false;
+      }
+      if (a === 1) {
+        var d = white ? 1 : -1, r1 = r + d;
+        if (attacks) { [-1, 1].forEach(function (dc) { if (ins(r1, c + dc)) out.push(r1 * 8 + c + dc); }); return out; }
+        if (ins(r1, c) && s.b[r1 * 8 + c] === 0) {
+          out.push(r1 * 8 + c);
+          var r2 = r + 2 * d;
+          if (r === (white ? 1 : 6) && s.b[r2 * 8 + c] === 0) out.push(r2 * 8 + c);
+        }
+        [-1, 1].forEach(function (dc) {
+          if (!ins(r1, c + dc)) return;
+          var t = r1 * 8 + c + dc, tv = s.b[t];
+          if ((tv !== 0 && (tv > 0) !== white) || s.ep === t) out.push(t);
+        });
+      } else if (a === 2) KN.forEach(function (m) { add(r + m[0], c + m[1]); });
+      else if (a === 6) KS.forEach(function (m) { add(r + m[0], c + m[1]); });
+      else {
+        var dirs = a === 3 ? DG : a === 4 ? ST : ST.concat(DG);
+        dirs.forEach(function (m) { var k = 1; while (add(r + m[0] * k, c + m[1] * k)) k++; });
+      }
+      return out;
+    }
+    function attacked(s, sq, byWhite) {
+      for (var i = 0; i < 64; i++) {
+        var p = s.b[i];
+        if (!p || (p > 0) !== byWhite) continue;
+        if (pseudo(s, i, true).indexOf(sq) >= 0) return true;
+      }
+      return false;
+    }
+    function kingSq(s, white) { return s.b.indexOf(white ? 6 : -6); }
+    function play(s, f, to) {
+      var n = { b: s.b.slice(), white: s.white, castle: s.castle.slice(), ep: -1, last: [f, to], inCheck: false, quiet: 0 };
+      var p = n.b[f], white = p > 0;
+      n.quiet = (Math.abs(p) === 1 || n.b[to] !== 0) ? 0 : s.quiet + 1;
+      if (Math.abs(p) === 1 && to === s.ep && n.b[to] === 0) n.b[to + (white ? -8 : 8)] = 0;
+      if (Math.abs(p) === 6 && Math.abs(to - f) === 2) {
+        if (to > f) { n.b[f + 1] = n.b[f + 3]; n.b[f + 3] = 0; } else { n.b[f - 1] = n.b[f - 4]; n.b[f - 4] = 0; }
+      }
+      n.b[to] = p; n.b[f] = 0;
+      if (Math.abs(p) === 1 && ((to >> 3) === 7 || (to >> 3) === 0)) n.b[to] = white ? 5 : -5;
+      if (Math.abs(p) === 1 && Math.abs(to - f) === 16) n.ep = (f + to) / 2;
+      if (p === 6) { n.castle[0] = n.castle[1] = false; }
+      if (p === -6) { n.castle[2] = n.castle[3] = false; }
+      [f, to].forEach(function (sq) {
+        if (sq === 7) n.castle[0] = false; if (sq === 0) n.castle[1] = false;
+        if (sq === 63) n.castle[2] = false; if (sq === 56) n.castle[3] = false;
+      });
+      n.white = !s.white;
+      n.inCheck = attacked(n, kingSq(n, n.white), !n.white);
+      return n;
+    }
+    function legal(s, f) {
+      var p = s.b[f];
+      if (!p || (p > 0) !== s.white) return [];
+      var white = p > 0, moves = pseudo(s, f, false);
+      if (Math.abs(p) === 6) {
+        var base = white ? 0 : 56, rook = white ? 4 : -4;
+        if (f === base + 4 && !attacked(s, f, !white)) {
+          if (s.castle[white ? 0 : 2] && !s.b[base + 5] && !s.b[base + 6] && s.b[base + 7] === rook && !attacked(s, base + 5, !white) && !attacked(s, base + 6, !white)) moves.push(base + 6);
+          if (s.castle[white ? 1 : 3] && !s.b[base + 1] && !s.b[base + 2] && !s.b[base + 3] && s.b[base] === rook && !attacked(s, base + 3, !white) && !attacked(s, base + 2, !white)) moves.push(base + 2);
+        }
+      }
+      return moves.filter(function (to) { var n = play(s, f, to); return !attacked(n, kingSq(n, white), !white); });
+    }
+    function allMoves(s) {
+      var out = [];
+      for (var f = 0; f < 64; f++) if (s.b[f] && (s.b[f] > 0) === s.white) legal(s, f).forEach(function (t) { out.push([f, t]); });
+      return out;
+    }
+    function notEnough(b) {
+      var o = b.filter(function (x) { return x !== 0 && Math.abs(x) !== 6; });
+      return o.length === 0 || (o.length === 1 && (Math.abs(o[0]) === 2 || Math.abs(o[0]) === 3));
+    }
+    // Score for the side to move: material, plus a little for central and advanced pieces.
+    function evaluate(s) {
+      var sc = 0;
+      for (var i = 0; i < 64; i++) {
+        var p = s.b[i]; if (!p) continue;
+        var a = Math.abs(p), r = i >> 3, c = i & 7, v = VAL[a];
+        if (a === 1) v += (p > 0 ? r - 1 : 6 - r) * 6;
+        if (a === 2 || a === 3) v += 12 - (Math.abs(3.5 - r) + Math.abs(3.5 - c)) * 4;
+        sc += p > 0 ? v : -v;
+      }
+      return s.white ? sc : -sc;
+    }
+    function search(s, depth) {
+      var moves = allMoves(s);
+      if (!moves.length) return s.inCheck ? -100000 - depth : 0;
+      if (depth === 0) return evaluate(s);
+      var best = -Infinity;
+      for (var i = 0; i < moves.length; i++) best = Math.max(best, -search(play(s, moves[i][0], moves[i][1]), depth - 1));
+      return best;
+    }
+    function computerMove(s) {
+      var moves = allMoves(s), best = null, bs = -Infinity;
+      moves.forEach(function (m) {
+        var v = -search(play(s, m[0], m[1]), 1) + Math.random() * 18;
+        if (v > bs) { bs = v; best = m; }
+      });
+      return best;
+    }
+
+    var game, sel = -1, busy = false, over = false, squares = [];
+    for (var vr = 7; vr >= 0; vr--) for (var vc = 0; vc < 8; vc++) {
+      (function (i) {
+        var b = document.createElement('button');
+        b.type = 'button'; b.className = 'sq' + (((i >> 3) + (i & 7)) % 2 === 0 ? ' d' : '');
+        b.addEventListener('click', function () { tap(i); });
+        boardEl.appendChild(b); squares[i] = b;
+      })(vr * 8 + vc);
+    }
+    function sqName(i) { return 'abcdefgh'[i & 7] + ((i >> 3) + 1); }
+    function setStatus(t, cls) { statusEl.textContent = t; statusEl.className = 'chess-status' + (cls ? ' ' + cls : ''); }
+    function render() {
+      var targets = sel >= 0 ? legal(game, sel) : [], chk = game.inCheck ? kingSq(game, game.white) : -1;
+      for (var i = 0; i < 64; i++) {
+        var p = game.b[i], b = squares[i];
+        b.innerHTML = p ? '<span class="pc ' + (p > 0 ? 'w' : 'b') + '">' + GLYPH[Math.abs(p)] + '︎</span>' : '';
+        b.classList.toggle('sel', i === sel);
+        b.classList.toggle('to', targets.indexOf(i) >= 0);
+        b.classList.toggle('cap', targets.indexOf(i) >= 0 && (p !== 0 || (Math.abs(game.b[sel]) === 1 && i === game.ep)));
+        b.classList.toggle('last', !!game.last && game.last.indexOf(i) >= 0);
+        b.classList.toggle('chk', i === chk);
+        b.setAttribute('aria-label', sqName(i) + (p ? ', ' + (p > 0 ? 'white ' : 'black ') + NAMES[Math.abs(p)] : '') + (targets.indexOf(i) >= 0 ? ', move here' : ''));
+        b.setAttribute('aria-pressed', i === sel ? 'true' : 'false');
+      }
+    }
+    function checkEnd() {
+      if (!allMoves(game).length) {
+        over = true;
+        if (game.inCheck) setStatus(game.white ? 'Checkmate. The computer wins this one.' : 'Checkmate! You win.', game.white ? 'lose' : 'win');
+        else setStatus('Stalemate. It\'s a draw.');
+        return true;
+      }
+      if (notEnough(game.b)) { over = true; setStatus('Not enough pieces left to win. It\'s a draw.'); return true; }
+      if (game.quiet >= 100) { over = true; setStatus('50 moves without a capture or pawn move. It\'s a draw.'); return true; }
+      return false;
+    }
+    function tap(i) {
+      if (busy || over || !game.white) return;
+      var p = game.b[i];
+      if (sel >= 0 && legal(game, sel).indexOf(i) >= 0) {
+        game = play(game, sel, i); sel = -1; render();
+        if (checkEnd()) return;
+        busy = true; setStatus('The computer is thinking…');
+        setTimeout(function () {
+          var m = computerMove(game);
+          if (m) game = play(game, m[0], m[1]);
+          busy = false; render();
+          if (!checkEnd()) setStatus(game.inCheck ? 'Check! Your move.' : 'Your move.');
+        }, 420);
+        return;
+      }
+      sel = (p > 0 && legal(game, i).length) ? (sel === i ? -1 : i) : -1;
+      if (p > 0 && !legal(game, i).length) setStatus('That piece can\'t move right now.');
+      else setStatus(game.inCheck ? 'Check! Your move.' : 'Your move.');
+      render();
+    }
+    function newGame() { game = initial(); sel = -1; busy = false; over = false; setStatus('You\'re white. Click a piece, then where it goes.'); render(); }
+    document.getElementById('chess-new').addEventListener('click', newGame);
+    document.getElementById('chess-close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+    document.getElementById('chess-more').addEventListener('click', function () { dlg.close(); });
+    newGame();
+    window.pkOpenChess = function () {
+      if (typeof dlg.showModal === 'function') { if (!dlg.open) dlg.showModal(); } else dlg.setAttribute('open', '');
+      var first = squares[12]; if (first) first.focus({ preventScroll: true });
+    };
+    window.pkChess = { initial: initial, play: play, legal: legal, allMoves: allMoves, computerMove: computerMove, get game() { return game; } }; // for testing
   })();
 </script>
 </body>
