@@ -7,31 +7,28 @@
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="claude:viewport-fit-sides" content="cover">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
 <style>
   /* Layout: one readable column, a sticky tab bar that switches between the two documents. */
   :root {
-    --bg: #F6F8F4;
+    --bg: #FBF7FF;
     --surface: #FFFFFF;
-    --ink: #17302A;
-    --muted: #55695F;
-    --line: #D6E0D8;
-    --accent: #1E7A55;
-    --accent-soft: #E1F1E8;
-    --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
-    --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --ink: #2A1446;
+    --muted: #65577D;
+    --line: #E7DDF5;
+    --accent: #3B1F8C;
+    --accent-soft: #EEE6FB;
+    --display: ui-rounded, "SF Pro Rounded", "Nunito", "Arial Rounded MT Bold", system-ui, sans-serif;
+    --body: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #0F1B17; --surface: #16251F; --ink: #E4EFE8; --muted: #9DB3A7;
-      --line: #2A3D35; --accent: #5FD3A0; --accent-soft: #1C3A2E; color-scheme: dark;
+      --bg: #1A0F2E; --surface: #24163D; --ink: #EDE6FA; --muted: #B8AAD3;
+      --line: #3A2A57; --accent: #F58DB4; --accent-soft: #3A1F45; color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #0F1B17; --surface: #16251F; --ink: #E4EFE8; --muted: #9DB3A7;
-    --line: #2A3D35; --accent: #5FD3A0; --accent-soft: #1C3A2E; color-scheme: dark;
+    --bg: #1A0F2E; --surface: #24163D; --ink: #EDE6FA; --muted: #B8AAD3;
+    --line: #3A2A57; --accent: #F58DB4; --accent-soft: #3A1F45; color-scheme: dark;
   }
   body {
     background: var(--bg); color: var(--ink);
@@ -84,14 +81,18 @@
   .contact { font-family: var(--display); font-weight: 600; font-size: 1.1rem; user-select: all; overflow-wrap: anywhere; }
   footer { margin-top: 3rem; color: var(--muted); font-size: 0.9rem; }
   @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-  article a { color: #1E6B4F; text-underline-offset: 2px; }
+  article a { color: var(--accent); text-underline-offset: 2px; }
+  .home { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font: 800 1.15rem var(--display); }
+  .home img { width: 34px; height: 34px; border-radius: 9px; }
+  .home:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; border-radius: 8px; }
+  h1 { font-weight: 900; letter-spacing: -0.015em; }
 </style>
 </head>
 <body>
 
 <div class="wrap">
   <header class="top">
-    <a class="eyebrow" href="/" style="text-decoration:none">← Pinch Park™ for Apple Vision Pro</a>
+    <a class="home" href="/"><img src="/apple-touch-icon.png" alt="">Pinch Park™</a>
     <h1>Privacy, Terms &amp; Support</h1>
     <p class="lede">What the game uses, what it never keeps, the rules that keep the Park friendly, and how to get help.</p>
   </header>
@@ -103,7 +104,7 @@
   </nav>
 
   <article id="privacy" aria-labelledby="tab-privacy" hidden>
-    <p class="updated">Last updated November 3, 2026</p>
+    <p class="updated">Last updated November 10, 2026</p>
     <p>Pinch Park™ ("the game", "we", "us") is a social game for Apple Vision Pro where players build a character, decorate a house, hang out at the Park and play table games together. This policy explains what information the game uses, why, who it's shared with, and the choices and rights you have. Pinch Park is made by Pinch Park LLC, a Washington limited liability company, which is responsible for your information. You can reach us at support@pinchpark.com.</p>
 
     <div class="callout"><strong>The short version:</strong> we don't sell or share your data for advertising, show ads, or track you. We don't run our own servers that store your gameplay. Voice and chat go live to nearby players and are never recorded or stored by us. Your progress stays on your device and in your own iCloud. The only personal information we ever receive is what's in a player report or an email you choose to send us.</div>
@@ -147,7 +148,7 @@
     <p>Game progress stays on your device and in your iCloud until you delete it. Player reports and support emails are kept only as long as needed to handle them and keep players safe, and no longer than 2 years, unless the law requires us to keep them longer. Banned player IDs stay on the ban list until the ban ends.</p>
 
     <h2>Children</h2>
-    <p>Apple recommends Apple Vision Pro for ages 13 and up; younger children should only use it with a parent's permission and supervision. Players under 13 automatically get kid-safe mode: no voice chat in or out, no typed chat with other players (quick phrases only), no trading, no photos from other players, and gifts only from friends they've added. Buying coins needs a grown-up to answer a parent check first, and Apple's Ask to Buy also applies. Players 13–17 start with voice chat from friends only. We don't knowingly collect personal information from children under 13. If you're a parent and think we've received your child's information (for example, in an email or report), contact us and we'll delete it.</p>
+    <p>Apple recommends Apple Vision Pro for ages 13 and up; younger children should only use it with a parent's permission and supervision. Players under 13 automatically get kid-safe mode: no voice chat in or out, no typed chat with other players (quick phrases only), no trading, no photos from other players, and gifts only from friends they've added. The name a child types for their character stays on their own device; other players only see an automatic friendly nickname (like “Sunny Panda”). So a child can't simply answer the age question again with an older age, the Vision Pro keeps a small note in its keychain that it was set up in kid-safe mode (no age or birth year, and it never leaves the device); a grown-up has to pass a quick check to change it. Buying coins needs a grown-up to answer a parent check first, and Apple's Ask to Buy also applies. Players 13–17 start with voice chat from friends only. We don't knowingly collect personal information from children under 13. If you're a parent and think we've received your child's information (for example, in an email or report), contact us and we'll delete it.</p>
 
     <h2>Your choices and rights</h2>
     <ul>
@@ -172,19 +173,19 @@
   </article>
 
   <article id="terms" aria-labelledby="tab-terms" hidden>
-    <p class="updated">Last updated November 3, 2026</p>
+    <p class="updated">Last updated November 10, 2026</p>
     <p>These Terms of Use ("Terms") are an agreement between you and Pinch Park LLC, a Washington limited liability company ("we", "us"). By downloading or playing Pinch Park you agree to these Terms, the Community Rules below and our Privacy Policy. If you don't agree, please don't play.</p>
     <div class="callout"><strong>Important:</strong> please read section 3 (health, safety and your own risk), sections 13 and 14 (disclaimers and limits on our liability) and section 16 (<strong>binding individual arbitration and a class action waiver</strong>, which affect how disputes are resolved, with a way to opt out within 30 days).</div>
 
     <h2>1. Who can play</h2>
-    <p>If you're under 18 (or the age of majority where you live), a parent or guardian must agree to these Terms for you, supervise your play, and is responsible for your use of the game, including purchases and following section 3. Apple recommends Apple Vision Pro for ages 13 and up. Players under 13 should only play with a parent's permission and direct supervision, and automatically get kid-safe mode. You may not play if you are barred from doing so by law, or if you live in, or are on a government list of people restricted by, a country or list under US sanctions or export laws.</p>
+    <p>If you're under 18 (or the age of majority where you live), a parent or guardian must agree to these Terms for you, supervise your play, and is responsible for your use of the game, including purchases and following section 3. Apple recommends Apple Vision Pro for ages 13 and up. Players under 13 should only play with a parent's permission and direct supervision, and automatically get kid-safe mode. You may not play if you are barred from doing so by law, or if you live in, or are on a government list of people restricted by, a country or list under US sanctions or export laws. If you agree to these Terms for a child, you agree to them for the child and for yourself, you confirm you're their parent or legal guardian, and, to the fullest extent allowed by law, the release in section 3 and your responsibility to us in section 15 cover claims by you and by your child.</p>
 
     <h2>2. Apple and the App Store</h2>
     <p>Your license to use the app comes from Apple's Licensed Application End User License Agreement (the "Standard EULA"), and these Terms add to it. These Terms are between you and us, not Apple. Apple is not responsible for the game or its content, has no obligation to provide maintenance or support, and is not responsible for any claims about the game (including product liability claims, claims that it fails to meet a legal or regulatory requirement, consumer protection or privacy claims, or claims that it infringes someone's intellectual property). If the app fails to conform to any warranty that applies by law, you may notify Apple for a refund of its purchase price, if any, and Apple has no other warranty obligation. Apple and its subsidiaries are third-party beneficiaries of these Terms and may enforce them against you.</p>
 
     <h2>3. Health, safety and your own risk</h2>
     <div class="callout"><strong>Seizure warning.</strong> A very small number of people may have seizures or blackouts when exposed to flashing lights or patterns, including in games, even if they have never had one before or have no history of epilepsy. If you or anyone in your family has had a seizure or epilepsy, talk to a doctor before playing. Stop playing immediately and see a doctor if you have dizziness, altered vision, eye or muscle twitching, loss of awareness, disorientation, convulsions or any involuntary movement.</div>
-    <p><strong>Your space.</strong> Pinch Park is a fully immersive game: while you play you may not be able to see the real room around you. You never need to walk around to play, because the game moves you. Play seated or standing in one place, in a safe area cleared of people, pets, furniture, stairs, sharp edges, cords and other hazards, and away from windows, walls and ceiling fans. Reaching out (for example to wave or high-five) can hit things or people near you. Some games, such as Table Tennis, ask you to swing your arm quickly: before playing them, make sure you have at least an arm's length of clear space all around you (including above you, such as ceiling fans and lamps), hold nothing else in your hands, and swing gently until you know your space. The game asks you to confirm your space is clear before Table Tennis. Be careful of the headset's cable and battery pack.</p>
+    <p><strong>Your space.</strong> Pinch Park is a fully immersive game: while you play you may not be able to see the real room around you. You never need to walk around to play, because the game moves you. Play seated or standing in one place, in a safe area cleared of people, pets, furniture, stairs, sharp edges, cords and other hazards, and away from windows, walls and ceiling fans. Reaching out (for example to wave or high-five) can hit things or people near you. Some games ask you to move your arms quickly or reach far out, such as swinging a paddle in Table Tennis or drawing a bow and releasing the string in Archery: before playing them, make sure you have at least an arm's length of clear space all around you (including above you, such as ceiling fans and lamps), hold nothing else in your hands, and swing gently until you know your space. The game asks you to confirm your space is clear before Table Tennis and Archery. In Archery, keep both arms within your clear space and never point your real hand or anything you're holding at another person. Be careful of the headset's cable and battery pack. Never play near stairs, balconies, open windows, pools or other water, fire or heat sources, or anything breakable, and don't let other people, children or pets walk into your play space. You are responsible for any injury to others and any damage to your home, your belongings or other people's property that happens while you play.</p>
     <p><strong>Your body.</strong> Virtual movement can cause motion sickness, eye strain, headaches, nausea, disorientation, or tired hands and arms. Take a break at least every 30 minutes (the game can remind you), use Comfort mode if turning bothers you, and stop if you feel any discomfort. After playing, wait until any symptoms are completely gone before driving, riding a bike, using machinery or doing anything that needs balance or attention. If you are pregnant, elderly, have a heart condition, vision or balance problems, a psychiatric condition, or a medical device such as a pacemaker, talk to your doctor first and follow Apple's Apple Vision Pro safety and health information. Keep the volume at a comfortable level.</p>
     <p><strong>When not to play.</strong> Never play while driving, riding, walking around, operating machinery, or under the influence of alcohol, drugs or anything that affects your balance or judgment, and never in a moving vehicle (except as a passenger using Apple's travel mode where available).</p>
     <p><strong>Your choice and your risk.</strong> You understand that using a headset and playing an immersive game carries these and other risks, some of which can't be foreseen. You choose to play voluntarily and, to the fullest extent allowed by law, you accept those risks and are responsible for your own safety, your surroundings and your property, and (if you're a parent or guardian) your child's. To the fullest extent allowed by law, you release Pinch Park LLC and its members, managers and contractors from claims for injury, illness or damage that come from those risks, except where caused by our gross negligence or intentional misconduct. Pinch Park is entertainment only. It is not a medical, fitness or therapeutic product, and nothing in it is medical advice.</p>
@@ -201,7 +202,7 @@
     </ol>
 
     <h2>5. Other players and what they say</h2>
-    <p>Pinch Park lets you talk and play live with people you don't know. We filter chat and names, and we give you Mute, Block and Report, but we can't watch or listen to every conversation, and voice chat is live and unrecorded. Other players' words and actions are their own, not ours, and we aren't responsible for them. Be careful about who you trust, never share personal information, never meet anyone from the game in person (and if you're under 18, tell a parent if anyone asks you to), and report anything that worries you. If someone is in danger, contact local emergency services first.</p>
+    <p>Pinch Park lets you talk and play live with people you don't know. We filter chat and names, and we give you Mute, Block and Report, but we can't watch or listen to every conversation, and voice chat is live and unrecorded. Other players' words and actions are their own, not ours, and we aren't responsible for them. Be careful about who you trust, never share personal information, never meet anyone from the game in person (and if you're under 18, tell a parent if anyone asks you to), and report anything that worries you. If someone is in danger, contact local emergency services first. Anything that happens between players outside the game (for example, meeting in person, talking on other apps, or deals made outside the game) is entirely between those players, and we aren't responsible for it.</p>
 
     <h2>6. Trades and gifts between players</h2>
     <p>Trading and gifting are optional and at your own risk. Check every trade before you accept it. Trades and gifts are final, and we don't have to return, replace or restore items or coins lost through a trade, gift, scam or mistake, although we may choose to.</p>
@@ -222,10 +223,10 @@
     <p>The game, its characters, art, sounds, music, code and the Pinch Park™ name and logo belong to us or our licensors and are protected by law, including copyright and trademark law. You may not use the Pinch Park name, logo or characters, or any confusingly similar name or logo, for your own apps, games, products, accounts or websites without our written permission. Apart from playing the game as intended, you may not copy, sell, rent, reverse engineer, or make derivative works from it. If you send us ideas or feedback, we may use them freely without paying you.</p>
 
     <h2>12. Copyright complaints</h2>
-    <p>If you believe something in the game infringes your copyright, email us with: your contact details; a description of the work; where it appears in the game (for example, the player's name and where you saw it); a statement that you have a good-faith belief the use isn't authorized; a statement, under penalty of perjury, that your notice is accurate and you own or are authorized to act for the owner; and your physical or electronic signature. We'll remove infringing material and may ban repeat infringers.</p>
+    <p>If you believe something in the game infringes your copyright, email us with: your contact details; a description of the work; where it appears in the game (for example, the player's name and where you saw it); a statement that you have a good-faith belief the use isn't authorized; a statement, under penalty of perjury, that your notice is accurate and you own or are authorized to act for the owner; and your physical or electronic signature. We'll remove infringing material and may ban repeat infringers. Send notices to our copyright agent: Pinch Park LLC, Attn: Copyright Agent, support@pinchpark.com.</p>
 
     <h2>13. The game is provided "as is"</h2>
-    <p>TO THE FULLEST EXTENT ALLOWED BY LAW, THE GAME AND EVERYTHING IN IT ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITH ALL FAULTS AND WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, SAFETY, TITLE AND NON-INFRINGEMENT. We don't promise that the game will always be available, error-free, secure, safe for every person, or that your progress, coins or items will never be lost. Online features depend on Apple's services and your internet connection, and we may change, pause or end any part of the game at any time. We aren't responsible for delays or failures caused by events outside our reasonable control, such as outages of Apple's or other third-party services, internet failures, natural disasters or changes in law.</p>
+    <p>TO THE FULLEST EXTENT ALLOWED BY LAW, THE GAME AND EVERYTHING IN IT ARE PROVIDED "AS IS" AND "AS AVAILABLE", WITH ALL FAULTS AND WITHOUT WARRANTIES OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, SAFETY, TITLE AND NON-INFRINGEMENT. We don't promise that the game will always be available, error-free, secure, safe for every person, or that your progress, coins or items will never be lost. We don't make or sell your Apple Vision Pro or any other hardware, and we aren't responsible for your device, its battery, cables or accessories, or for how Apple's software and services work. Online features depend on Apple's services and your internet connection, and we may change, pause or end any part of the game at any time. We aren't responsible for delays or failures caused by events outside our reasonable control, such as outages of Apple's or other third-party services, internet failures, natural disasters or changes in law.</p>
 
     <h2>14. Limits on our liability</h2>
     <p>TO THE FULLEST EXTENT ALLOWED BY LAW, PINCH PARK LLC AND ITS MEMBERS, MANAGERS AND CONTRACTORS WILL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY OR PUNITIVE DAMAGES, OR FOR ANY LOSS OF DATA, PROGRESS, VIRTUAL ITEMS, PROFITS OR GOODWILL, OR FOR PERSONAL INJURY, ILLNESS OR PROPERTY DAMAGE (INCLUDING TO YOUR HEADSET OR HOME) ARISING FROM YOUR USE OF THE GAME OR YOUR SURROUNDINGS WHILE PLAYING, OR FOR THE CONDUCT OR CONTENT OF OTHER PLAYERS, EVEN IF WE WERE TOLD THESE WERE POSSIBLE. OUR TOTAL LIABILITY FOR ALL CLAIMS RELATING TO THE GAME OR THESE TERMS IS LIMITED TO THE GREATER OF THE AMOUNT YOU PAID US FOR THE GAME AND IN-GAME PURCHASES IN THE 12 MONTHS BEFORE THE CLAIM, OR US $50. These limits apply whatever the legal theory (contract, tort including negligence, product liability or otherwise). Nothing in these Terms limits liability that the law doesn't allow to be limited, such as for fraud, gross negligence or intentional misconduct, or (where the law requires) for death or personal injury caused by negligence; in places that don't allow some of these limits, they apply as far as the law allows.</p>
@@ -243,7 +244,7 @@
     <p><strong>Outside the US.</strong> If you live in the EU, the UK or another place whose laws don't allow these dispute terms or give you rights that can't be waived by contract (including the right to bring a claim in your local courts), this section applies only as far as those laws allow, and nothing here takes those rights away.</p>
 
     <h2>17. Other legal terms</h2>
-    <p>If any part of these Terms can't be enforced, the rest still applies, and the unenforceable part is limited as little as needed. If we don't enforce a part right away, we can still enforce it later. These Terms, the Privacy Policy and Apple's Standard EULA are the whole agreement between you and us about the game. You can't transfer these Terms to someone else; we may transfer them if the game is sold or transferred. Headings are for convenience only. We may update these Terms as the game changes; we'll update this page and the date at the top, and tell players in the game if a change is significant. Changes don't apply to a dispute we already know about. If we change these Terms or the health and safety information in a meaningful way, the game will ask you to read and agree again before you keep playing. If you keep playing after a change, you accept the new Terms.</p>
+    <p>If any part of these Terms can't be enforced, the rest still applies, and the unenforceable part is limited as little as needed. If we don't enforce a part right away, we can still enforce it later. These Terms, the Privacy Policy and Apple's Standard EULA are the whole agreement between you and us about the game. You can't transfer these Terms to someone else; we may transfer them if the game is sold or transferred. Headings are for convenience only. Tapping I Understand & Agree (or continuing to play) is your electronic signature and has the same effect as signing on paper. We may send you notices in the game, on our website, or by email to any address you've written to us from; you can send notices to support@pinchpark.com. You're responsible for your Vision Pro, your Apple Account and Game Center account, and anything done with them. Nothing in these Terms makes you and us partners, employer and employee, agents or a joint venture. We may update the game, sometimes automatically, and some updates may be needed to keep playing online. We may update these Terms as the game changes; we'll update this page and the date at the top, and tell players in the game if a change is significant. Changes don't apply to a dispute we already know about. If we change these Terms or the health and safety information in a meaningful way, the game will ask you to read and agree again before you keep playing. If you keep playing after a change, you accept the new Terms.</p>
 
     <h2>18. Trademarks and affiliation</h2>
     <p>Pinch Park™, the Pinch Park logo and the Pinch Park character designs are trademarks of Pinch Park LLC. Pinch Park is an independent game and is not made, sponsored or endorsed by Apple Inc. Apple, Apple Vision Pro, Game Center, SharePlay, FaceTime and iCloud are trademarks of Apple Inc. Chess, checkers, pool and the other table games are traditional games; the game's own art and designs are original. Any resemblance of a player's character name to a real person is the player's doing, not ours.</p>
@@ -273,7 +274,7 @@
     <p>Check that you're signed in to Game Center, that your internet is working, and that Screen Time allows multiplayer games and communication. Voice chat follows the Safety setting (everyone nearby, friends only, or nobody). Players under 13 don't have voice chat.</p>
 
     <h2>Staying safe while you play</h2>
-    <p>You can't see your room while playing, so play seated or standing in one place with the space around you cleared. Keep at least an arm's length of clear space all around you, especially for Table Tennis, where you swing your arm. Take a break at least every 30 minutes (the game reminds you), and stop right away if you feel unwell. Read the full <a href="/terms.html">health and safety information</a>. You play at your own risk.</p>
+    <p>You can't see your room while playing, so play seated or standing in one place with the space around you cleared. Keep at least an arm's length of clear space all around you, especially for Table Tennis and Archery, where you swing your arm or draw a bow. Take a break at least every 30 minutes (the game reminds you), and stop right away if you feel unwell. Read the full <a href="/terms.html">health and safety information</a>. You play at your own risk.</p>
 
     <h2>I feel dizzy or sick while playing</h2>
     <p>Take off the headset and rest until you feel completely fine, and don't drive until then. Turn on <strong>Comfort mode</strong> in Friends → Safety so turning happens in steps instead of a smooth spin, and keep break reminders on. If you have a seizure or any symptom in the safety warning, stop and see a doctor.</p>
