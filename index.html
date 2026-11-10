@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pinch Park™: Hang Out & Play on Apple Vision Pro</title>
-<meta name="description" content="Pinch Park™ is a free social game for Apple Vision Pro. Meet people at the Park, high-five for real with hand tracking, play 12 games including archery, table tennis and mini golf, and dress up your character.">
+<meta name="description" content="Pinch Park™ is a free social game for Apple Vision Pro. Meet people at the Park, high-five for real with hand tracking, play 21 games including bowling, darts, archery, table tennis and mini golf, and dress up your character.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content="Pinch Park™: Hang out & play on Apple Vision Pro">
-<meta property="og:description" content="Meet people at the Park, high-five for real, and play 12 games together. Free on Apple Vision Pro.">
+<meta property="og:description" content="Meet people at the Park, high-five for real, and play 21 games together. Free on Apple Vision Pro.">
 <meta property="og:image" content="https://pinchpark.com/og.png">
 <meta property="og:url" content="https://pinchpark.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -84,8 +84,12 @@
   .t-archery { background: #2E6B3E; }
   .t-tennis { background: #1F4FB8; }
   .t-golf { background: #157A6E; }
+  .hands.flip { grid-template-columns: 1fr 1fr 1.25fr; }
+  .t-darts { background: #8C1C3A; }
+  .t-bags { background: #B8620F; }
+  .t-bowling { background: #3B1F8C; }
 
-  /* The other nine: a tabletop shelf */
+  /* Everything played at the game table: a tabletop shelf */
   .tables { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
   .table { background: #fff; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
   .table .pic { position: relative; aspect-ratio: 4 / 3; background: #F1EAFB; }
@@ -145,7 +149,7 @@
   .legal { margin-top: 20px; font-size: 13px; color: #B9A9D6; max-width: 80ch; }
 
   @media (max-width: 900px) {
-    .hands { grid-template-columns: 1fr; }
+    .hands, .hands.flip { grid-template-columns: 1fr; }
     .hand-tile { min-height: 340px; }
     .tables { grid-template-columns: repeat(2, 1fr); }
     .together-grid, .yours-grid { grid-template-columns: 1fr; gap: 40px; }
@@ -247,7 +251,7 @@
     </nav>
     <div class="sky-copy">
       <h1>Pinch where you want to go.</h1>
-      <p>Pinch Park is a social world for Apple Vision Pro. Hang out at the Park, high-five for real, and play 12 games with friends.</p>
+      <p>Pinch Park is a social world for Apple Vision Pro. Hang out at the Park, high-five for real, and play 21 games with friends.</p>
       <div class="cta-row">
         <span class="store" aria-label="Coming soon to Apple Vision Pro, free to download"><small>Coming soon · Free on</small>Apple Vision Pro</span>
         <a class="ghost" href="#games">See the games</a>
@@ -282,7 +286,7 @@
   <section id="games">
     <div class="wrap">
       <div class="lead">
-        <h2>12 games, played together.</h2>
+        <h2>21 games, played together.</h2>
         <p>Pull up a seat at a game table with a friend, or practice against the computer. Walk past any table at the Park to watch a game live.</p>
       </div>
 
@@ -342,6 +346,81 @@
             <img src="/shots/minigolf.jpg" alt="Mini Golf in Pinch Park" onerror="this.remove()">
           </div>
           <div class="words"><h3>Mini Golf</h3><p>18 holes on Easy, Medium and Hard courses: windmills, spinning gates, water and lava.</p></div>
+        </article>
+      </div>
+
+      <div class="hands flip">
+        <article class="hand-tile t-darts">
+          <div class="pic">
+            <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="240" fill="#B88A5E"/>
+              <g stroke="#A47A50" stroke-width="2"><path d="M0 40h300M0 80h300M0 120h300M0 160h300M0 200h300"/></g>
+              <rect x="70" y="30" width="160" height="160" rx="10" fill="#3B2A1E"/>
+              <g transform="translate(150 110)">
+                <circle r="70" fill="#161616"/>
+                <circle r="56" fill="#F1E3C0"/>
+                <circle r="28" fill="none" stroke="#1C1C1C" stroke-width="56" stroke-dasharray="8.8 8.8" transform="rotate(-9)"/>
+                <circle r="54" fill="none" stroke="#1F8A4C" stroke-width="5"/>
+                <circle r="54" fill="none" stroke="#D3302F" stroke-width="5" stroke-dasharray="16.96 16.96" transform="rotate(-9)"/>
+                <circle r="34" fill="none" stroke="#1F8A4C" stroke-width="5"/>
+                <circle r="34" fill="none" stroke="#D3302F" stroke-width="5" stroke-dasharray="10.68 10.68" transform="rotate(-9)"/>
+                <circle r="7" fill="#1F8A4C"/><circle r="3.2" fill="#D3302F"/>
+              </g>
+              <g transform="translate(160 76) rotate(-24)"><rect x="0" y="-1.5" width="30" height="3" fill="#C9A227"/><rect x="30" y="-1" width="16" height="2" fill="#222"/><path d="M46 0 l14 -9 l-4 9 l4 9 z" fill="#F0679A"/></g>
+              <g transform="translate(140 112) rotate(-10)"><rect x="0" y="-1.5" width="30" height="3" fill="#C9A227"/><rect x="30" y="-1" width="16" height="2" fill="#222"/><path d="M46 0 l14 -9 l-4 9 l4 9 z" fill="#FFD24A"/></g>
+              <g transform="translate(250 200) rotate(-35)"><rect x="0" y="-2" width="36" height="4" fill="#C9A227"/><rect x="36" y="-1.2" width="20" height="2.4" fill="#222"/><path d="M56 0 l18 -11 l-5 11 l5 11 z" fill="#F0679A"/></g>
+            </svg>
+            <img src="/shots/darts.jpg" alt="Darts in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Darts</h3><p>Pinch a dart, aim by your cheek and flick. Real doubles, trebles and bullseyes.</p></div>
+        </article>
+        <article class="hand-tile t-bags">
+          <div class="pic">
+            <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="240" fill="#A6DBF5"/><rect y="120" width="300" height="120" fill="#5CB46C"/>
+              <ellipse cx="40" cy="122" rx="60" ry="26" fill="#3F8F55"/><ellipse cx="270" cy="124" rx="60" ry="24" fill="#3F8F55"/>
+              <path d="M110 205 L 140 120 L 220 120 L 250 205 Z" fill="#E9D2A6"/>
+              <path d="M120 198 L 146 126 L 214 126 L 240 198 Z" fill="#2A6FDB"/>
+              <ellipse cx="183" cy="142" rx="15" ry="7" fill="#111"/>
+              <rect x="150" y="166" width="26" height="18" rx="5" fill="#E53935" transform="rotate(-8 163 175)"/>
+              <path d="M40 200 Q 120 30, 190 128" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+              <rect x="88" y="62" width="26" height="22" rx="6" fill="#E53935" transform="rotate(25 101 73)"/>
+            </svg>
+            <img src="/shots/beanbag.jpg" alt="Bean Bag Toss in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Bean Bag Toss</h3><p>Swing underhand and let go. 1 point on the board, 3 in the hole.</p></div>
+        </article>
+        <article class="hand-tile t-bowling">
+          <div class="pic">
+            <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="400" height="240" fill="#1E1230"/>
+              <path d="M70 240 L 150 80 L 250 80 L 330 240 Z" fill="#14101E"/>
+              <path d="M100 240 L 162 80 L 238 80 L 300 240 Z" fill="#EAC88E"/>
+              <g stroke="#D9B37A" stroke-width="1"><path d="M160 240 L 188 80M200 240 L 200 80M240 240 L 212 80"/></g>
+              <g fill="#2B2B2B"><path d="M176 186 l5 -12 l5 12z"/><path d="M195 182 l5 -12 l5 12z"/><path d="M214 186 l5 -12 l5 12z"/></g>
+              <rect x="150" y="18" width="100" height="62" fill="#0E0B16"/>
+              <g transform="translate(200 82) scale(2) translate(-200 -64)">
+              <g fill="#FAFAFA">
+                <g transform="translate(188 50)"><rect x="-2.4" y="-12" width="4.8" height="12" rx="2.4"/><circle cy="-13" r="2.2"/></g>
+                <g transform="translate(196 50)"><rect x="-2.4" y="-12" width="4.8" height="12" rx="2.4"/><circle cy="-13" r="2.2"/></g>
+                <g transform="translate(204 50)"><rect x="-2.4" y="-12" width="4.8" height="12" rx="2.4"/><circle cy="-13" r="2.2"/></g>
+                <g transform="translate(212 50)"><rect x="-2.4" y="-12" width="4.8" height="12" rx="2.4"/><circle cy="-13" r="2.2"/></g>
+                <g transform="translate(192 55)"><rect x="-2.7" y="-13" width="5.4" height="13" rx="2.7"/><circle cy="-14" r="2.5"/></g>
+                <g transform="translate(200 55)"><rect x="-2.7" y="-13" width="5.4" height="13" rx="2.7"/><circle cy="-14" r="2.5"/></g>
+                <g transform="translate(208 55)"><rect x="-2.7" y="-13" width="5.4" height="13" rx="2.7"/><circle cy="-14" r="2.5"/></g>
+                <g transform="translate(196 60)"><rect x="-3" y="-14" width="6" height="14" rx="3"/><circle cy="-15" r="2.8"/></g>
+                <g transform="translate(204 60)"><rect x="-3" y="-14" width="6" height="14" rx="3"/><circle cy="-15" r="2.8"/></g>
+                <g transform="translate(200 65)"><rect x="-3.3" y="-15" width="6.6" height="15" rx="3.3"/><circle cy="-16" r="3"/></g>
+              </g>
+              <g fill="#D32F2F"><rect x="196.7" y="47" width="6.6" height="2"/></g>
+              </g>
+              <circle cx="224" cy="196" r="28" fill="#F0679A"/>
+              <g fill="#7A2A4D"><circle cx="216" cy="186" r="3.6"/><circle cx="228" cy="184" r="3.6"/><circle cx="222" cy="196" r="4"/></g>
+              <path d="M226 160 C 222 130, 212 110, 206 96" fill="none" stroke="#FFD24A" stroke-width="2.5" stroke-dasharray="3 8" stroke-linecap="round"/>
+            </svg>
+            <img src="/shots/bowling.jpg" alt="Bowling in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Bowling</h3><p>Swing and roll down your own lane. Real strike and spare scoring, with bumpers if you want them.</p></div>
         </article>
       </div>
 
@@ -443,6 +522,79 @@
             <g fill="none" stroke="#3E9A57" stroke-width="6"><circle cx="111" cy="32" r="9"/><circle cx="50" cy="90" r="9"/></g></svg>
           <img src="/shots/tictactoe.jpg" alt="Tic-Tac-Toe in Pinch Park" onerror="this.remove()"></div>
           <div class="words"><h3>Tic-Tac-Toe</h3><p>Quick three in a row</p></div></article>
+
+        <article class="table"><div class="pic">
+          <svg viewBox="0 0 160 120" aria-hidden="true"><rect width="160" height="120" fill="#FFF0D6"/>
+            <rect x="46" y="104" width="68" height="6" rx="2" fill="#6B4A2B"/>
+            <g fill="#EBD3A6" stroke="#C9A26B" stroke-width=".8">
+              <rect x="52" y="96" width="56" height="8"/>
+              <rect x="52" y="88" width="17" height="8"/><rect x="71.5" y="88" width="17" height="8"/><rect x="91" y="88" width="17" height="8"/>
+              <rect x="52" y="80" width="56" height="8"/><rect x="52" y="64" width="56" height="8"/>
+              <rect x="52" y="72" width="17" height="8"/><rect x="91" y="72" width="17" height="8"/>
+              <rect x="52" y="56" width="17" height="8"/><rect x="71.5" y="56" width="17" height="8"/><rect x="91" y="56" width="17" height="8"/>
+              <rect x="52" y="48" width="56" height="8"/><rect x="52" y="32" width="56" height="8"/>
+              <rect x="52" y="40" width="17" height="8"/><rect x="71.5" y="40" width="17" height="8"/>
+              <rect x="52" y="24" width="17" height="8"/><rect x="71.5" y="24" width="17" height="8"/><rect x="91" y="24" width="17" height="8"/>
+              <rect x="52" y="16" width="56" height="8"/>
+            </g>
+            <rect x="96" y="40" width="34" height="8" fill="#F5E4C3" stroke="#C9A26B" stroke-width=".8" transform="rotate(-6 96 44)"/>
+            <path d="M134 36 l8 -4 M136 44 l9 0 M134 52 l8 4" stroke="#F0679A" stroke-width="2.4" stroke-linecap="round"/></svg>
+          <img src="/shots/tower.jpg" alt="Tumble Tower in Pinch Park" onerror="this.remove()"></div>
+          <div class="words"><h3>Tumble Tower</h3><p>Pull blocks out slowly. Don't topple it!</p></div></article>
+
+        <article class="table"><div class="pic">
+          <svg viewBox="0 0 160 120" aria-hidden="true"><rect width="160" height="120" fill="#E9DDF8"/>
+            <path d="M58 104 L 66 86 M 102 104 L 94 86" stroke="#A9744C" stroke-width="4" stroke-linecap="round"/>
+            <rect x="34" y="14" width="92" height="74" rx="5" fill="#A9744C"/><rect x="39" y="19" width="82" height="64" rx="2" fill="#FFFDF7"/>
+            <g fill="none" stroke="#1D2B53" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M58 70 V 50 H 92 V 70 Z M 54 50 L 75 34 L 96 50 M 70 70 V 58 H 80 V 70"/>
+              <circle cx="104" cy="32" r="6"/><path d="M104 22v-3M104 45v-3M94 32h-3M117 32h-3"/></g>
+            <g transform="translate(130 18)"><circle r="12" fill="#F0679A"/><text x="0" y="5.5" font-size="16" font-weight="900" text-anchor="middle" fill="#fff" font-family="ui-rounded, system-ui">?</text></g></svg>
+          <img src="/shots/sketch.jpg" alt="Sketch &amp; Guess in Pinch Park" onerror="this.remove()"></div>
+          <div class="words"><h3>Sketch &amp; Guess</h3><p>Draw in the air, everyone guesses, 2–6 players</p></div></article>
+
+        <article class="table"><div class="pic">
+          <svg viewBox="0 0 160 120" aria-hidden="true"><rect width="160" height="120" fill="#E2F3E6"/>
+            <rect x="30" y="10" width="100" height="100" rx="6" fill="#1C5D99"/>
+            <g stroke="#174E82" stroke-width="1.2"><path d="M40 10v100M50 10v100M60 10v100M70 10v100M80 10v100M90 10v100M100 10v100M110 10v100M120 10v100M30 20h100M30 30h100M30 40h100M30 50h100M30 60h100M30 70h100M30 80h100M30 90h100M30 100h100"/></g>
+            <rect x="42" y="22" width="46" height="7" rx="3.5" fill="#8A9199"/><rect x="102" y="42" width="7" height="36" rx="3.5" fill="#8A9199"/><rect x="52" y="82" width="26" height="7" rx="3.5" fill="#8A9199"/>
+            <g fill="#E53935"><circle cx="55" cy="25.5" r="3.6"/><circle cx="65" cy="25.5" r="3.6"/><circle cx="105.5" cy="55" r="3.6"/></g>
+            <g fill="#FAFAFA"><circle cx="85" cy="45" r="2.8"/><circle cx="45" cy="65" r="2.8"/><circle cx="115" cy="95" r="2.8"/><circle cx="75" cy="105" r="2.8"/><circle cx="95" cy="15" r="2.8"/></g></svg>
+          <img src="/shots/fleet.jpg" alt="Fleet Hunt in Pinch Park" onerror="this.remove()"></div>
+          <div class="words"><h3>Fleet Hunt</h3><p>Find and sink the hidden ships</p></div></article>
+
+        <article class="table"><div class="pic">
+          <svg viewBox="0 0 160 120" aria-hidden="true"><rect width="160" height="120" fill="#FCE3EC"/>
+            <rect x="14" y="14" width="132" height="92" rx="8" fill="#5A3A22"/>
+            <rect x="20" y="20" width="56" height="80" fill="#2F4F3A"/><rect x="84" y="20" width="56" height="80" fill="#2F4F3A"/>
+            <g fill="#E8D3A9"><path d="M20 20h9.3l-4.65 34z M38.6 20h9.3l-4.65 34z M57.2 20h9.3l-4.65 34z M84 20h9.3l-4.65 34z M102.6 20h9.3l-4.65 34z M121.2 20h9.3l-4.65 34z M29.3 100h9.3l-4.65 -34z M47.9 100h9.3l-4.65 -34z M66.5 100h9.3l-4.65 -34z M93.3 100h9.3l-4.65 -34z M111.9 100h9.3l-4.65 -34z M130.5 100h9.3l-4.65 -34z"/></g>
+            <g fill="#8C2F2F"><path d="M29.3 20h9.3l-4.65 34z M47.9 20h9.3l-4.65 34z M66.5 20h9.3l-4.65 34z M93.3 20h9.3l-4.65 34z M111.9 20h9.3l-4.65 34z M130.5 20h9.3l-4.65 34z M20 100h9.3l-4.65 -34z M38.6 100h9.3l-4.65 -34z M57.2 100h9.3l-4.65 -34z M84 100h9.3l-4.65 -34z M102.6 100h9.3l-4.65 -34z M121.2 100h9.3l-4.65 -34z"/></g>
+            <g fill="#F2EEE4" stroke="#B9AE98" stroke-width=".6"><circle cx="24.6" cy="95" r="4.4"/><circle cx="24.6" cy="86" r="4.4"/><circle cx="125.8" cy="25" r="4.4"/><circle cx="125.8" cy="34" r="4.4"/><circle cx="125.8" cy="43" r="4.4"/><circle cx="98" cy="95" r="4.4"/></g>
+            <g fill="#B3262E" stroke="#7F1D1D" stroke-width=".6"><circle cx="24.6" cy="25" r="4.4"/><circle cx="24.6" cy="34" r="4.4"/><circle cx="71.2" cy="95" r="4.4"/><circle cx="71.2" cy="86" r="4.4"/><circle cx="71.2" cy="77" r="4.4"/><circle cx="116.5" cy="95" r="4.4"/></g>
+            <rect x="79" y="52" width="9" height="9" rx="2" fill="#FAFAFA"/><rect x="79" y="62" width="9" height="9" rx="2" fill="#FAFAFA"/>
+            <g fill="#222"><circle cx="83.5" cy="56.5" r="1.2"/><circle cx="81.5" cy="64.5" r="1.1"/><circle cx="85.5" cy="68.5" r="1.1"/></g></svg>
+          <img src="/shots/backgammon.jpg" alt="Backgammon in Pinch Park" onerror="this.remove()"></div>
+          <div class="words"><h3>Backgammon</h3><p>Roll, race and hit, 2 players</p></div></article>
+
+        <article class="table"><div class="pic">
+          <svg viewBox="0 0 160 120" aria-hidden="true"><rect width="160" height="120" fill="#E2F3E6"/>
+            <defs><g id="dtile"><rect x="-18" y="-9" width="36" height="18" rx="3" fill="#F7F3E8" stroke="#CFC6B3" stroke-width=".8"/><rect x="-.6" y="-6.5" width="1.2" height="13" fill="#333"/></g></defs>
+            <g transform="translate(40 40)"><use href="#dtile"/><g fill="#222"><circle cx="-9" cy="0" r="2"/><circle cx="5" cy="-4" r="2"/><circle cx="13" cy="4" r="2"/></g></g>
+            <g transform="translate(78 40)"><use href="#dtile"/><g fill="#222"><circle cx="-13" cy="-4" r="2"/><circle cx="-5" cy="4" r="2"/><circle cx="5" cy="-4" r="2"/><circle cx="13" cy="-4" r="2"/><circle cx="5" cy="4" r="2"/><circle cx="13" cy="4" r="2"/></g></g>
+            <g transform="translate(116 40)"><use href="#dtile"/><g fill="#222"><circle cx="-13" cy="-4" r="2"/><circle cx="-13" cy="4" r="2"/><circle cx="-5" cy="-4" r="2"/><circle cx="-5" cy="4" r="2"/><circle cx="9" cy="0" r="2"/></g></g>
+            <g transform="translate(116 66) rotate(90)"><use href="#dtile"/><g fill="#222"><circle cx="-9" cy="0" r="2"/><circle cx="5" cy="-4" r="2"/><circle cx="9" cy="0" r="2"/><circle cx="13" cy="4" r="2"/></g></g>
+            <g transform="translate(84 92)"><use href="#dtile"/><g fill="#222"><circle cx="-13" cy="-4" r="2"/><circle cx="-5" cy="4" r="2"/><circle cx="-9" cy="0" r="2"/><circle cx="9" cy="0" r="2"/></g></g>
+            <g transform="translate(40 92)"><use href="#dtile"/><g fill="#222"><circle cx="-13" cy="-4" r="2"/><circle cx="-5" cy="4" r="2"/></g></g></svg>
+          <img src="/shots/dominoes.jpg" alt="Dominoes in Pinch Park" onerror="this.remove()"></div>
+          <div class="words"><h3>Dominoes</h3><p>Match the dots, 2–4 players</p></div></article>
+
+        <article class="table"><div class="pic">
+          <svg viewBox="0 0 160 120" aria-hidden="true"><rect width="160" height="120" fill="#E9DDF8"/>
+            <rect x="26" y="12" width="118" height="96" rx="8" fill="#3B2F63"/>
+            <g fill="#2B3A67" stroke="#D4AF37" stroke-width="1.2"><rect x="36" y="20" width="22" height="26" rx="4"/><rect x="62" y="20" width="22" height="26" rx="4"/><rect x="114" y="20" width="22" height="26" rx="4"/><rect x="62" y="50" width="22" height="26" rx="4"/><rect x="88" y="50" width="22" height="26" rx="4"/><rect x="114" y="50" width="22" height="26" rx="4"/><rect x="36" y="80" width="22" height="26" rx="4"/><rect x="62" y="80" width="22" height="26" rx="4"/><rect x="88" y="80" width="22" height="26" rx="4"/><rect x="114" y="80" width="22" height="26" rx="4"/></g>
+            <rect x="88" y="20" width="22" height="26" rx="4" fill="#FBF8F1"/><circle cx="99" cy="33" r="7" fill="#3A86FF"/><rect x="36" y="50" width="22" height="26" rx="4" fill="#FBF8F1"/><circle cx="47" cy="63" r="7" fill="#3A86FF"/></svg>
+          <img src="/shots/memory.jpg" alt="Memory Match in Pinch Park" onerror="this.remove()"></div>
+          <div class="words"><h3>Memory Match</h3><p>Find the most pairs, 2–4 players</p></div></article>
       </div>
     </div>
   </section>
@@ -560,7 +712,7 @@
       <details><summary>How much does it cost?</summary><p>Pinch Park is free to download. You earn coins by playing, working shifts and winning games. Coin packs and the optional VIP Club are available as in-app purchases.</p></details>
       <details><summary>What do I need to play?</summary><p>An Apple Vision Pro. You play with your hands: look and pinch. A game controller works too, if you have one.</p></details>
       <details><summary>Do I have to walk around my room?</summary><p>No. Play seated or standing in one place: the game moves you. Just keep the space around you clear.</p></details>
-      <details><summary>Can I play with my friends?</summary><p>Yes. Meet up at the Park, invite friends to your house, or start a FaceTime game night with SharePlay. All 12 games can be played with friends, and you can practice against the computer any time.</p></details>
+      <details><summary>Can I play with my friends?</summary><p>Yes. Meet up at the Park, invite friends to your house, or start a FaceTime game night with SharePlay. All 21 games can be played with friends, and you can practice against the computer any time.</p></details>
       <details><summary>Is it OK for kids?</summary><p>Players under 13 automatically get kid-safe mode, and a parent or guardian agrees to the rules for anyone under 18. Apple recommends Apple Vision Pro for ages 13 and up, so younger children should play only with a parent's permission and supervision.</p></details>
       <details><summary>I need help with something.</summary><p>Visit <a href="/support.html">Support</a> or email <a href="mailto:support@pinchpark.com">support@pinchpark.com</a>.</p></details>
     </div>
