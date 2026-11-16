@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pinch Park™: Hang Out & Play on Apple Vision Pro</title>
-<meta name="description" content="Pinch Park™ is a social game for Apple Vision Pro, $4.99 on the App Store. Meet people at the Park, high-five for real with hand tracking, play 25 games including bowling, table hockey, hoops, archery, table tennis and mini golf, and dress up your character.">
+<meta name="description" content="Pinch Park™ is a social game for Apple Vision Pro, $4.99 on the App Store. Meet people at the Park, high-five for real with hand tracking, play 31 games including racing, fishing, bowling, hoops, archery and mini golf, and dress up your character.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content="Pinch Park™: Hang out & play on Apple Vision Pro">
-<meta property="og:description" content="Meet people at the Park, high-five for real, and play 25 games together. $4.99 on Apple Vision Pro.">
+<meta property="og:description" content="Meet people at the Park, high-five for real, and play 31 games together. $4.99 on Apple Vision Pro.">
 <meta property="og:image" content="https://pinchpark.com/og.png">
 <meta property="og:url" content="https://pinchpark.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -143,6 +143,12 @@
   .t-hockey { background: #0E5E78; }
   .t-hoops { background: #B4400E; }
   .t-shuffle { background: #5C3A1E; }
+  .t-sled { background: #1B4F7A; }
+  .t-ski { background: #2B6CB0; }
+  .t-dirt { background: #4E6B2A; }
+  .t-kart { background: #B71C1C; }
+  .t-fish { background: #0F6670; }
+  .t-paper { background: #4A5568; }
 
   /* Everything played at the game table: a tabletop shelf */
   .tables { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -274,7 +280,7 @@
     </nav>
     <div class="sky-copy">
       <h1>Pinch where you want to go.</h1>
-      <p>Pinch Park is a social world for Apple Vision Pro. Hang out at the Park, high-five for real, and play 25 games with friends.</p>
+      <p>Pinch Park is a social world for Apple Vision Pro. Hang out at the Park, high-five for real, and play 31 games with friends.</p>
       <div class="cta-row">
         <span class="store" aria-label="Coming soon to Apple Vision Pro for $4.99"><small>Coming soon · $4.99 on</small>Apple Vision Pro</span>
         <a class="ghost" href="#games">See the games</a>
@@ -475,7 +481,7 @@
     <div class="board" id="chess-board" role="group" aria-label="Chessboard. White is at the bottom."></div>
     <div class="files" aria-hidden="true"><span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span></div>
     <div class="chess-bottom">
-      <p>In Pinch Park you play at real tables with friends, or the computer. Chess is 1 of 25 games. <a href="#games" id="chess-more">See them all</a></p>
+      <p>In Pinch Park you play at real tables with friends, or the computer. Chess is 1 of 31 games. <a href="#games" id="chess-more">See them all</a></p>
       <button class="btn" id="chess-new" type="button">New game</button>
     </div>
   </div>
@@ -485,8 +491,8 @@
   <section id="games">
     <div class="wrap">
       <div class="lead">
-        <h2>25 games, played together.</h2>
-        <p>Pull up a seat at a game table with a friend, or practice against the computer. Walk past any table at the Park to watch a game live.</p>
+        <h2>31 games, played together.</h2>
+        <p>Pull up a seat at a game table with a friend, or practice against the computer. Race down mountains and round a track, fish off the dock at the lake, or walk past any table at the Park to watch a game live.</p>
       </div>
 
       <!-- Real screenshots: drop images into /shots with these names and they replace the drawings automatically. -->
@@ -680,6 +686,142 @@
             <img src="/shots/shuffleboard.jpg" alt="Table Shuffleboard in Pinch Park" onerror="this.remove()">
           </div>
           <div class="words"><h3>Table Shuffleboard</h3><p>Slide your pucks down a long wooden table. Stop in the 3 zone, hang one off the edge for 4, or knock theirs off.</p></div>
+        </article>
+      </div>
+
+      <div class="hands">
+        <article class="hand-tile t-sled">
+          <div class="pic">
+            <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="400" height="240" fill="#BFDDF2"/>
+              <path d="M0 120 L 70 50 L 130 100 L 200 30 L 290 110 L 350 70 L 400 100 V 240 H 0 Z" fill="#8FA3B8"/>
+              <path d="M70 50 L 92 72 L 80 70 L 70 78 L 58 68 Z M200 30 L 228 56 L 212 54 L 200 64 L 186 54 Z M350 70 L 368 86 L 354 84 L 344 90 L 334 82 Z" fill="#fff"/>
+              <path d="M0 150 C 120 120, 260 170, 400 140 V 240 H 0 Z" fill="#F4F8FC"/>
+              <g fill="#1D4632"><path d="M40 176 l 16 -50 l 16 50 z"/><path d="M340 168 l 18 -56 l 18 56 z"/><path d="M372 180 l 12 -38 l 12 38 z"/></g>
+              <g fill="#fff"><path d="M48 150 l 8 -24 l 8 24 l -8 -4 z"/><path d="M350 138 l 8 -26 l 8 26 l -8 -4 z"/></g>
+              <path d="M110 214 C 170 196, 230 196, 300 170" fill="none" stroke="#DDE8F2" stroke-width="10" stroke-linecap="round"/>
+              <g transform="translate(232 178) rotate(-12)">
+                <rect x="-46" y="10" width="92" height="7" rx="3" fill="#23262B"/>
+                <path d="M-40 10 L -30 -12 L 30 -16 L 52 4 L 46 12 Z" fill="#E8392B"/>
+                <path d="M18 -16 L 30 -30 L 36 -16 Z" fill="#BFD8EE"/>
+                <rect x="-36" y="-22" width="28" height="10" rx="4" fill="#1A1C20"/>
+                <circle cx="-22" cy="-34" r="9" fill="#F6C915"/><rect x="-28" y="-26" width="14" height="16" rx="5" fill="#1E7FE0"/>
+              </g>
+              <g fill="#fff" opacity=".9"><circle cx="168" cy="196" r="6"/><circle cx="152" cy="188" r="4"/><circle cx="140" cy="200" r="5"/></g>
+            </svg>
+            <img src="/shots/snowmobile.jpg" alt="Snowmobile in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Snowmobile</h3><p>Hold your fists out like handlebars and race down a snowy mountain: jumps, pines and rocks, in about 60, 90 or 120 seconds.</p></div>
+        </article>
+        <article class="hand-tile t-ski">
+          <div class="pic">
+            <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="240" fill="#A8D4F2"/>
+              <path d="M0 70 L 300 30 V 240 H 0 Z" fill="#F4F8FC"/>
+              <g><rect x="60" y="62" width="3" height="36" fill="#D3302F"/><rect x="92" y="58" width="3" height="36" fill="#D3302F"/><rect x="62" y="64" width="31" height="12" fill="#D3302F"/></g>
+              <g><rect x="196" y="104" width="3" height="40" fill="#1E6FD9"/><rect x="232" y="100" width="3" height="40" fill="#1E6FD9"/><rect x="198" y="106" width="35" height="14" fill="#1E6FD9"/></g>
+              <path d="M70 100 C 110 130, 210 120, 214 150 S 150 210, 120 236" fill="none" stroke="#D5E3F0" stroke-width="6" stroke-linecap="round"/>
+              <g transform="translate(150 178) rotate(-18)">
+                <rect x="-34" y="20" width="70" height="4" rx="2" fill="#E8392B"/><rect x="-30" y="26" width="70" height="4" rx="2" fill="#E8392B"/>
+                <path d="M-8 20 L -2 0 L 10 2 L 6 20 Z" fill="#1C1E22"/>
+                <path d="M-10 2 L 12 4 L 14 -18 L -8 -20 Z" fill="#F2B807"/>
+                <circle cx="2" cy="-28" r="9" fill="#1E7FE0"/>
+                <path d="M-6 -8 L -26 12 M10 -8 L 30 10" stroke="#555" stroke-width="2.5"/>
+              </g>
+            </svg>
+            <img src="/shots/skiing.jpg" alt="Downhill Skiing in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Downhill Skiing</h3><p>Hold your hands out and slalom through the gates. Tuck to go faster; every gate you miss adds 2 seconds.</p></div>
+        </article>
+        <article class="hand-tile t-dirt">
+          <div class="pic">
+            <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="240" fill="#B9E0F2"/>
+              <g fill="#3D6B2E"><circle cx="30" cy="120" r="40"/><circle cx="90" cy="110" r="34"/><circle cx="250" cy="116" r="42"/><circle cx="295" cy="130" r="30"/></g>
+              <g fill="#2E5A28"><path d="M150 150 l 22 -80 l 22 80 z"/><path d="M196 150 l 16 -60 l 16 60 z"/></g>
+              <rect y="150" width="300" height="90" fill="#6F8E3A"/>
+              <path d="M0 196 C 80 186, 220 186, 300 196 V 240 H 0 Z" fill="#7A5532"/>
+              <path d="M40 196 L 120 196 L 150 164 L 156 196 Z" fill="#8B5E36"/>
+              <ellipse cx="236" cy="206" rx="34" ry="8" fill="#3B2A1A"/>
+              <g transform="translate(196 118) rotate(-14)">
+                <circle cx="-30" cy="18" r="17" fill="none" stroke="#141414" stroke-width="7"/><circle cx="32" cy="18" r="17" fill="none" stroke="#141414" stroke-width="7"/>
+                <path d="M-30 18 L -6 0 L 18 0 L 32 18" stroke="#B9C0C8" stroke-width="4" fill="none"/>
+                <path d="M-12 -6 L 22 -8 L 26 2 L -8 4 Z" fill="#E8392B"/>
+                <path d="M22 -8 L 32 18" stroke="#B9C0C8" stroke-width="4"/>
+                <path d="M16 -14 L 34 -16" stroke="#222" stroke-width="3"/>
+                <circle cx="2" cy="-34" r="9" fill="#F2B807"/><path d="M-6 -24 L 10 -24 L 14 -6 L -4 -6 Z" fill="#1E7FE0"/>
+              </g>
+              <g fill="#7A5532" opacity=".8"><circle cx="140" cy="166" r="4"/><circle cx="128" cy="172" r="3"/></g>
+            </svg>
+            <img src="/shots/dirtbike.jpg" alt="Dirt Bike in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Dirt Bike</h3><p>Race through the forest: fly the dirt jumps, ride around fallen logs and rocks, and stay out of the mud.</p></div>
+        </article>
+      </div>
+
+      <div class="hands flip">
+        <article class="hand-tile t-kart">
+          <div class="pic">
+            <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="240" fill="#5C8A3A"/>
+              <path d="M-20 240 C 40 120, 120 80, 320 70 L 320 150 C 170 150, 110 190, 90 260 Z" fill="#3A3D42"/>
+              <path d="M-20 240 C 40 120, 120 80, 320 70" fill="none" stroke="#fff" stroke-width="8" stroke-dasharray="14 14"/>
+              <path d="M-20 240 C 40 120, 120 80, 320 70" fill="none" stroke="#E53935" stroke-width="8" stroke-dasharray="14 14" stroke-dashoffset="14"/>
+              <g fill="#1A1A1C"><rect x="244" y="20" width="10" height="10"/><rect x="264" y="20" width="10" height="10"/><rect x="254" y="30" width="10" height="10"/><rect x="274" y="30" width="10" height="10"/></g>
+              <g fill="#fff"><rect x="254" y="20" width="10" height="10"/><rect x="274" y="20" width="10" height="10"/><rect x="244" y="30" width="10" height="10"/><rect x="264" y="30" width="10" height="10"/></g>
+              <rect x="242" y="20" width="3" height="56" fill="#ddd"/>
+              <g transform="translate(160 140) rotate(-16)">
+                <rect x="-40" y="-6" width="16" height="22" rx="4" fill="#141414"/><rect x="26" y="-6" width="16" height="22" rx="4" fill="#141414"/>
+                <rect x="-40" y="-40" width="14" height="18" rx="4" fill="#141414"/><rect x="26" y="-40" width="14" height="18" rx="4" fill="#141414"/>
+                <path d="M-26 14 L -22 -44 L 22 -44 L 26 14 Z" fill="#1E7FE0"/>
+                <circle cx="0" cy="-6" r="10" fill="#F2B807"/>
+                <circle cx="0" cy="-24" r="8" fill="none" stroke="#15161A" stroke-width="3"/>
+              </g>
+            </svg>
+            <img src="/shots/gokarts.jpg" alt="Go-Karts in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Go-Karts</h3><p>Grab the wheel and race 2, 3 or 4 laps. Clip the tire walls and you lose speed.</p></div>
+        </article>
+        <article class="hand-tile t-fish">
+          <div class="pic">
+            <svg viewBox="0 0 300 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="300" height="240" fill="#F6C98E"/>
+              <circle cx="220" cy="92" r="26" fill="#FFE7A8"/>
+              <path d="M0 100 C 60 84, 120 96, 160 90 S 260 84, 300 96 V 120 H 0 Z" fill="#4C7838"/>
+              <rect y="112" width="300" height="128" fill="#2C6A87"/>
+              <g stroke="#9FD0E6" stroke-width="2" opacity=".6"><path d="M30 150 h40 M120 170 h50 M200 140 h40 M60 200 h60 M210 210 h50"/></g>
+              <path d="M-10 240 L 120 240 L 100 196 L -10 196 Z" fill="#B88A5E"/>
+              <path d="M70 200 L 200 70" stroke="#1E2A3A" stroke-width="4" stroke-linecap="round"/>
+              <path d="M200 70 C 214 110, 222 140, 226 158" fill="none" stroke="#F2F2EE" stroke-width="1.5"/>
+              <g transform="translate(226 160)"><circle r="6" fill="#E53935"/><path d="M-6 0 A 6 6 0 0 0 6 0 Z" fill="#fff"/></g>
+              <ellipse cx="226" cy="164" rx="18" ry="4" fill="none" stroke="#D9EEF7" stroke-width="2"/>
+              <g transform="translate(150 150) rotate(-24)"><ellipse rx="24" ry="9" fill="#5D7A3A"/><path d="M22 0 L 36 -10 L 36 10 Z" fill="#5D7A3A"/><circle cx="-14" cy="-2" r="2" fill="#111"/></g>
+              <g fill="#BFE3F2"><circle cx="134" cy="170" r="3"/><circle cx="168" cy="132" r="2.5"/><circle cx="176" cy="160" r="2"/></g>
+            </svg>
+            <img src="/shots/fishing.jpg" alt="Fishing in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Fishing</h3><p>Flick your left hand to cast, circle your right hand to reel. Let it run, or the line snaps. Biggest catch wins.</p></div>
+        </article>
+        <article class="hand-tile t-paper">
+          <div class="pic">
+            <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <rect width="400" height="240" fill="#E6E1D6"/>
+              <rect x="230" y="30" width="130" height="70" rx="4" fill="#CFE6F7" stroke="#B8B2A6" stroke-width="4"/>
+              <rect y="170" width="400" height="70" fill="#6F7782"/>
+              <path d="M290 132 L 334 132 L 328 204 L 296 204 Z" fill="#5D646C"/>
+              <ellipse cx="312" cy="132" rx="22" ry="6" fill="#2E3238" stroke="#9AA2AB" stroke-width="3"/>
+              <g transform="translate(160 120)">
+                <rect x="-32" y="-32" width="64" height="64" rx="8" fill="#ECEDEF"/><circle r="24" fill="#C9D3DD"/>
+                <g fill="#9AA8B6"><path d="M0 0 L -8 -22 L 8 -22 Z"/><path d="M0 0 L 22 4 L 14 18 Z"/><path d="M0 0 L -16 16 L -22 2 Z"/></g>
+                <rect x="-4" y="32" width="8" height="52" fill="#A7ADB4"/><rect x="-22" y="82" width="44" height="6" rx="3" fill="#A7ADB4"/>
+                <g stroke-width="4" stroke-linecap="round"><path d="M34 -14 C 54 -20, 64 -8, 84 -16" stroke="#E53935" fill="none"/><path d="M34 0 C 56 6, 66 -4, 88 2" stroke="#FDD835" fill="none"/><path d="M34 14 C 54 20, 66 10, 84 18" stroke="#1E88E5" fill="none"/></g>
+              </g>
+              <path d="M40 150 C 120 40, 200 40, 304 120" fill="none" stroke="#fff" stroke-width="3" stroke-dasharray="2 9" stroke-linecap="round"/>
+              <g transform="translate(246 70)"><circle r="12" fill="#F2F0EA"/><path d="M-8 -4 L 2 -9 L 9 -1 L 3 8 L -7 6 Z" fill="none" stroke="#C9C4B6" stroke-width="1.5"/></g>
+            </svg>
+            <img src="/shots/papertoss.jpg" alt="Paper Toss in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Paper Toss</h3><p>Toss crumpled paper into the trash can while a fan blows it off course. Easy, Medium or Hard: aim upwind!</p></div>
         </article>
       </div>
 
@@ -969,17 +1111,17 @@
         <li><strong>No ads, no tracking.</strong> Delete your data from inside the game any time.</li>
         <li><strong>Comfort mode</strong> and break reminders for comfortable play.</li>
       </ul>
-      <div class="warning"><strong>Health &amp; safety:</strong> a very small number of people may have seizures from flashing lights or patterns. You can't see your room while playing, so you could hit a wall, furniture, a person or a pet. Play seated or standing in one place, and every time you play, first make sure there's at least one arm's length of open space in front of you, behind you, to both sides and above you (games like Table Tennis, Archery and Darts have you swing your arm, draw a bow or throw). Take regular breaks, and stop if you feel unwell. Children should play only with adult supervision. You play at your own risk. Read the full <a href="/terms.html">health and safety information</a> before playing.</div>
+      <div class="warning"><strong>Health &amp; safety:</strong> a very small number of people may have seizures from flashing lights or patterns. You can't see your room while playing, so you could hit a wall, furniture, a person or a pet. Play seated or standing in one place, and every time you play, first make sure there's at least one arm's length of open space in front of you, behind you, to both sides and above you (games like Table Tennis, Archery, Darts and Fishing have you swing your arm, draw a bow, throw or cast). In the racing games the world moves around you while you stay still, which can make some people feel sick: play seated if you can. Take regular breaks, and stop if you feel unwell. Children should play only with adult supervision. You play at your own risk. Read the full <a href="/terms.html">health and safety information</a> before playing.</div>
     </div>
   </section>
 
   <section id="faq">
     <div class="wrap faq">
       <div class="lead"><h2>Questions</h2></div>
-      <details><summary>How much does it cost?</summary><p>Pinch Park is $4.99 (US) on the App Store, a one-time purchase. Prices in other countries are set by Apple in local currency. Inside the game you earn coins by playing, working shifts and winning games. Coin packs and the optional VIP Club are extra, optional in-app purchases. You never need them to play any of the 25 games.</p></details>
+      <details><summary>How much does it cost?</summary><p>Pinch Park is $4.99 (US) on the App Store, a one-time purchase. Prices in other countries are set by Apple in local currency. Inside the game you earn coins by playing, working shifts and winning games. Coin packs and the optional VIP Club are extra, optional in-app purchases. You never need them to play any of the 31 games.</p></details>
       <details><summary>What do I need to play?</summary><p>An Apple Vision Pro. You play with your hands: look and pinch. A game controller works too, if you have one.</p></details>
       <details><summary>Do I have to walk around my room?</summary><p>No. Play seated or standing in one place: the game moves you. Just keep the space around you clear.</p></details>
-      <details><summary>Can I play with my friends?</summary><p>Yes. Meet up at the Park, invite friends to your house, or start a FaceTime game night with SharePlay. All 25 games can be played with friends, and you can practice against the computer any time.</p></details>
+      <details><summary>Can I play with my friends?</summary><p>Yes. Meet up at the Park, invite friends to your house, or start a FaceTime game night with SharePlay. All 31 games can be played with friends, and you can practice against the computer any time.</p></details>
       <details><summary>Is it OK for kids?</summary><p>Players under 13 automatically get kid-safe mode, and a parent or guardian agrees to the rules for anyone under 18. Apple recommends Apple Vision Pro for ages 13 and up, so younger children should play only with a parent's permission and supervision.</p></details>
       <details><summary>I need help with something.</summary><p>Visit <a href="/support.html">Support</a> or email <a href="mailto:support@pinchpark.com">support@pinchpark.com</a>.</p></details>
     </div>
