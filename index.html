@@ -4,11 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Pinch Park™: Hang Out & Play on Apple Vision Pro</title>
-<meta name="description" content="Pinch Park™ is a social game for Apple Vision Pro, $4.99 on the App Store. Meet people at the Park, high-five for real with hand tracking, play 31 games including racing, fishing, bowling, hoops, archery and mini golf, and dress up your character.">
+<meta name="description" content="Pinch Park™ is a social game for Apple Vision Pro, $4.99 on the App Store. Meet people at the Park, high-five for real with hand tracking, play 32 games including pinball, racing, fishing, bowling, hoops, archery and mini golf, and dress up your character.">
 <link rel="icon" type="image/png" href="/favicon.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:title" content="Pinch Park™: Hang out & play on Apple Vision Pro">
-<meta property="og:description" content="Meet people at the Park, high-five for real, and play 31 games together. $4.99 on Apple Vision Pro.">
+<meta property="og:description" content="Meet people at the Park, high-five for real, and play 32 games together. $4.99 on Apple Vision Pro.">
 <meta property="og:image" content="https://pinchpark.com/og.png">
 <meta property="og:url" content="https://pinchpark.com/">
 <meta name="twitter:card" content="summary_large_image">
@@ -149,6 +149,7 @@
   .t-kart { background: #B71C1C; }
   .t-fish { background: #0F6670; }
   .t-paper { background: #4A5568; }
+  .t-pinball { background: #3A0CA3; }
 
   /* Everything played at the game table: a tabletop shelf */
   .tables { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
@@ -280,7 +281,7 @@
     </nav>
     <div class="sky-copy">
       <h1>Pinch where you want to go.</h1>
-      <p>Pinch Park is a social world for Apple Vision Pro. Hang out at the Park, high-five for real, and play 31 games with friends.</p>
+      <p>Pinch Park is a social world for Apple Vision Pro. Hang out at the Park, high-five for real, and play 32 games with friends.</p>
       <div class="cta-row">
         <span class="store" aria-label="Coming soon to Apple Vision Pro for $4.99"><small>Coming soon · $4.99 on</small>Apple Vision Pro</span>
         <a class="ghost" href="#games">See the games</a>
@@ -481,7 +482,7 @@
     <div class="board" id="chess-board" role="group" aria-label="Chessboard. White is at the bottom."></div>
     <div class="files" aria-hidden="true"><span>a</span><span>b</span><span>c</span><span>d</span><span>e</span><span>f</span><span>g</span><span>h</span></div>
     <div class="chess-bottom">
-      <p>In Pinch Park you play at real tables with friends, or the computer. Chess is 1 of 31 games. <a href="#games" id="chess-more">See them all</a></p>
+      <p>In Pinch Park you play at real tables with friends, or the computer. Chess is 1 of 32 games. <a href="#games" id="chess-more">See them all</a></p>
       <button class="btn" id="chess-new" type="button">New game</button>
     </div>
   </div>
@@ -491,7 +492,7 @@
   <section id="games">
     <div class="wrap">
       <div class="lead">
-        <h2>31 games, played together.</h2>
+        <h2>32 games, played together.</h2>
         <p>Pull up a seat at a game table with a friend, or practice against the computer. Race down mountains and round a track, fish off the dock at the lake, or walk past any table at the Park to watch a game live.</p>
       </div>
 
@@ -823,6 +824,24 @@
           </div>
           <div class="words"><h3>Paper Toss</h3><p>Toss crumpled paper into the trash can while a fan blows it off course. Easy, Medium or Hard: aim upwind!</p></div>
         </article>
+        <article class="hand-tile t-pinball">
+          <div class="pic">
+            <svg viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs><linearGradient id="pbg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3A0CA3"/><stop offset="1" stop-color="#1B0B4A"/></linearGradient></defs>
+              <rect width="400" height="240" fill="url(#pbg)"/>
+              <g fill="#fff" opacity=".8"><circle cx="40" cy="30" r="2"/><circle cx="90" cy="70" r="1.5"/><circle cx="350" cy="40" r="2"/><circle cx="310" cy="90" r="1.5"/><circle cx="60" cy="150" r="1.5"/><circle cx="370" cy="170" r="2"/></g>
+              <path d="M120 240 L 120 70 A 80 80 0 0 1 280 70 L 280 240" fill="#24124F" stroke="#C77DFF" stroke-width="6"/>
+              <g><circle cx="170" cy="80" r="20" fill="#F72585"/><circle cx="170" cy="80" r="11" fill="#fff"/><circle cx="230" cy="80" r="20" fill="#7DF9FF"/><circle cx="230" cy="80" r="11" fill="#fff"/><circle cx="200" cy="125" r="20" fill="#F72585"/><circle cx="200" cy="125" r="11" fill="#fff"/></g>
+              <path d="M140 170 L 140 205 L 168 222" fill="none" stroke="#E4E8EE" stroke-width="5"/><path d="M260 170 L 260 205 L 232 222" fill="none" stroke="#E4E8EE" stroke-width="5"/>
+              <path d="M150 180 L 150 200 L 172 212 Z" fill="#F72585" opacity=".85"/><path d="M250 180 L 250 200 L 228 212 Z" fill="#7DF9FF" opacity=".85"/>
+              <path d="M170 226 L 193 236" stroke="#fff" stroke-width="10" stroke-linecap="round"/><path d="M230 226 L 207 214" stroke="#fff" stroke-width="10" stroke-linecap="round"/>
+              <circle cx="214" cy="178" r="8" fill="#E4E8EE"/><circle cx="211" cy="175" r="3" fill="#fff"/>
+              <path d="M200 160 L 204 170 L 215 170 L 206 176 L 210 187 L 200 180 L 190 187 L 194 176 L 185 170 L 196 170 Z" fill="#FFD60A"/>
+            </svg>
+            <img src="/shots/pinball.jpg" alt="Pinball in Pinch Park" onerror="this.remove()">
+          </div>
+          <div class="words"><h3>Pinball</h3><p>Pinch your left or right fingers to flip on 5 wild machines with ramps, multiball and light shows. Highest score wins.</p></div>
+        </article>
       </div>
 
       <div class="tables">
@@ -1111,17 +1130,17 @@
         <li><strong>No ads, no tracking.</strong> Delete your data from inside the game any time.</li>
         <li><strong>Comfort mode</strong> and break reminders for comfortable play.</li>
       </ul>
-      <div class="warning"><strong>Health &amp; safety:</strong> a very small number of people may have seizures from flashing lights or patterns. You can't see your room while playing, so you could hit a wall, furniture, a person or a pet. Play seated or standing in one place, and every time you play, first make sure there's at least one arm's length of open space in front of you, behind you, to both sides and above you (games like Table Tennis, Archery, Darts and Fishing have you swing your arm, draw a bow, throw or cast). In the racing games the world moves around you while you stay still, which can make some people feel sick: play seated if you can. Take regular breaks, and stop if you feel unwell. Children should play only with adult supervision. You play at your own risk. Read the full <a href="/terms.html">health and safety information</a> before playing.</div>
+      <div class="warning"><strong>Health &amp; safety:</strong> a very small number of people may have seizures from flashing lights or patterns. You can't see your room while playing, so you could hit a wall, furniture, a person or a pet. Play seated or standing in one place, and every time you play, first make sure there's at least one arm's length of open space in front of you, behind you, to both sides and above you (games like Table Tennis, Archery, Darts and Fishing have you swing your arm, draw a bow, throw or cast, and Pinball opens with a short glide down to your machine). In the racing games the world moves around you while you stay still, which can make some people feel sick: play seated if you can. Take regular breaks, and stop if you feel unwell. Children should play only with adult supervision. You play at your own risk. Read the full <a href="/terms.html">health and safety information</a> before playing.</div>
     </div>
   </section>
 
   <section id="faq">
     <div class="wrap faq">
       <div class="lead"><h2>Questions</h2></div>
-      <details><summary>How much does it cost?</summary><p>Pinch Park is $4.99 (US) on the App Store, a one-time purchase. Prices in other countries are set by Apple in local currency. Inside the game you earn coins by playing, working shifts and winning games. Coin packs ($4.99, $9.99 and $14.99, with more coins per dollar in the bigger packs) are optional in-app purchases. There are no subscriptions, and you never need to buy anything to play any of the 31 games.</p></details>
+      <details><summary>How much does it cost?</summary><p>Pinch Park is $4.99 (US) on the App Store, a one-time purchase. Prices in other countries are set by Apple in local currency. Inside the game you earn coins by playing, working shifts and winning games. Coin packs ($4.99, $9.99 and $14.99, with more coins per dollar in the bigger packs) are optional in-app purchases. There are no subscriptions, and you never need to buy anything to play any of the 32 games.</p></details>
       <details><summary>What do I need to play?</summary><p>An Apple Vision Pro. You play with your hands: look and pinch. A game controller works too, if you have one.</p></details>
       <details><summary>Do I have to walk around my room?</summary><p>No. Play seated or standing in one place: the game moves you. Just keep the space around you clear.</p></details>
-      <details><summary>Can I play with my friends?</summary><p>Yes. Meet up at the Park, invite friends to your house, or start a FaceTime game night with SharePlay. All 31 games can be played with friends, and you can practice against the computer any time.</p></details>
+      <details><summary>Can I play with my friends?</summary><p>Yes. Meet up at the Park, invite friends to your house, or start a FaceTime game night with SharePlay. All 32 games can be played with friends, and you can practice against the computer any time.</p></details>
       <details><summary>Is it OK for kids?</summary><p>Players under 13 automatically get kid-safe mode, and a parent or guardian agrees to the rules for anyone under 18. Apple recommends Apple Vision Pro for ages 13 and up, so younger children should play only with a parent's permission and supervision.</p></details>
       <details><summary>I need help with something.</summary><p>Visit <a href="/support.html">Support</a> or email <a href="mailto:support@pinchpark.com">support@pinchpark.com</a>.</p></details>
     </div>
